@@ -1,0 +1,76 @@
+/* ════════════════════════════════════════
+   Additional micro-detail styles loaded
+   after main stylesheet
+════════════════════════════════════════ */
+
+/* Active nav link highlight on scroll-spy */
+.nav-links a.active {
+  color: #D97A4A;
+}
+
+/* Qual-path step — highlighted state on hover */
+.qual-step {
+  border-left: 2px solid transparent;
+  padding-left: 1.25rem;
+  margin-left: -1.25rem;
+  transition: border-color 0.25s ease;
+}
+
+.qual-step:hover { border-left-color: rgba(217,122,74,0.35); }
+.qual-step-final:hover { border-left-color: #D97A4A; }
+
+/* Scope item — left accent bar on hover */
+.scope-item {
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.scope-item:hover { border-left-color: #D97A4A; }
+
+/* Gauge needle animated on load */
+@keyframes needleSweep {
+  from { transform: rotate(-80deg); transform-origin: 100px 100px; }
+  to   { transform: rotate(0deg); transform-origin: 100px 100px; }
+}
+
+#gauge-needle {
+  transform-origin: 100px 100px;
+  animation: needleSweep 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-play-state: paused;
+}
+
+#gauge-needle.animated {
+  animation-play-state: running;
+}
+
+/* Progress line that runs along the qual path */
+.qual-connector span {
+  transition: background 0.4s ease;
+}
+
+/* Banner image subtle zoom on scroll */
+.banner-image {
+  transition: transform 0.6s ease;
+}
+
+.banner-image-wrap:hover .banner-image {
+  transform: scale(1.012);
+}
+
+/* Smooth underline for footer links */
+.footer-nav a {
+  position: relative;
+}
+
+.footer-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: rgba(220,232,242,0.55);
+  transition: width 0.25s ease;
+}
+
+.footer-nav a:hover::after { width: 100%; }
