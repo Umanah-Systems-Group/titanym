@@ -13,14 +13,14 @@
   <meta property="og:site_name" content="Titanym" />
   <meta property="og:title" content="Titanym | Specialized Semiconductor Manufacturing Platform" />
   <meta property="og:description" content="Building a specialized semiconductor manufacturing platform around single-crystal SiGe on sapphire. 4x carrier mobility. 8-step manufacturing process. Built for space, defense, and RF markets." />
-  <meta property="og:image" content="https://titanym.com/images/titanym1.jpg" />
+  <meta property="og:image" content="https://titanym.com/images/og-social-share.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://titanym.com" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Titanym | Specialized Semiconductor Manufacturing Platform" />
   <meta name="twitter:description" content="Building a specialized semiconductor manufacturing platform around single-crystal SiGe on sapphire. Built for space, defense, and RF markets where silicon falls short." />
-  <meta name="twitter:image" content="https://titanym.com/images/titanym1.jpg" />
+  <meta name="twitter:image" content="https://titanym.com/images/og-social-share.jpg" />
   <link rel="canonical" href="https://titanym.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,8 +49,12 @@ h1,h2,h3,h4{font-family:'Syne',system-ui,sans-serif;color:var(--white);line-heig
 .btn-outline:hover{border-color:var(--platinum);color:var(--white)}
 .tag{display:inline-block;font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);background:rgba(30,58,95,.5);border:1px solid rgba(143,163,184,.2);padding:.3rem .85rem}
 
+/* BOXED LAYOUT — desktop only */
+.page-box{max-width:1200px;margin:0 auto;background:var(--void);box-shadow:0 0 80px rgba(0,0,0,0.5);position:relative;overflow-x:hidden}
+body{background:#04080F}
+
 /* NAV */
-.site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,14,24,0);border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
+.site-header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;z-index:100;background:rgba(8,14,24,0);border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
 .site-header.scrolled{background:rgba(8,14,24,.96);border-bottom-color:rgba(30,58,95,.5);backdrop-filter:blur(16px)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
 .wordmark{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:var(--amber);letter-spacing:.05em}
@@ -246,6 +250,9 @@ select.contact-input{cursor:pointer}
 
 /* RESPONSIVE — MOBILE */
 @media(max-width:640px){
+
+  /* Header full width on mobile */
+  .site-header{left:0;transform:none;max-width:100%}
   /* Nav: always visible, sticky, wordmark centered */
   .site-header{background:rgba(8,14,24,.97)!important;border-bottom-color:rgba(30,58,95,.5)!important}
   .nav-inner{position:relative}
@@ -352,6 +359,7 @@ select.contact-input{cursor:pointer}
 </head>
 <body>
 
+<div class="page-box">
 <header class="site-header" id="site-header">
   <div class="container nav-inner">
     <a href="#" class="wordmark">TITANYM</a>
@@ -890,5 +898,6 @@ if(form){
   });
 }
 </script>
+</div><!-- /page-box -->
 </body>
 </html>
