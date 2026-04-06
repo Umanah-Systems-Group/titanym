@@ -222,7 +222,7 @@ select.contact-input{cursor:pointer}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* RESPONSIVE */
+/* RESPONSIVE — TABLET */
 @media(max-width:960px){
   .thesis-grid{grid-template-columns:1fr;gap:3rem}
   .markets-grid{grid-template-columns:1fr 1fr}
@@ -236,7 +236,6 @@ select.contact-input{cursor:pointer}
   .footer-inner{grid-template-columns:1fr;gap:2rem}
   .footer-copy{text-align:left}
   .footer-nav{align-items:flex-start}
-  /* Hero stats: 2x2 grid on tablet */
   .hero-stats{grid-template-columns:1fr 1fr;gap:1.5rem}
   .hero-stat+.hero-stat{border-left:none}
   .hero-stat{padding:0}
@@ -244,25 +243,110 @@ select.contact-input{cursor:pointer}
   .hero-stat:nth-child(3){border-top:1px solid rgba(30,58,95,.4);padding-top:1.5rem}
   .hero-stat:nth-child(4){border-top:1px solid rgba(30,58,95,.4);border-left:1px solid rgba(30,58,95,.5);padding-top:1.5rem;padding-left:1.5rem}
 }
+
+/* RESPONSIVE — MOBILE */
 @media(max-width:640px){
+  /* Nav: always visible, sticky, wordmark centered */
+  .site-header{background:rgba(8,14,24,.97)!important;border-bottom-color:rgba(30,58,95,.5)!important}
+  .nav-inner{position:relative}
+  .wordmark{position:absolute;left:50%;transform:translateX(-50%)}
+  .nav-hamburger{margin-left:auto}
   .nav-links{display:none;flex-direction:column}
-  .nav-links.open{display:flex;position:fixed;top:68px;left:0;right:0;background:var(--void);padding:1.5rem 2rem 2rem;gap:1.25rem;border-bottom:1px solid rgba(30,58,95,.4);z-index:99}
+  .nav-links.open{display:flex;position:fixed;top:68px;left:0;right:0;background:var(--void);padding:1.5rem 2rem 2rem;gap:1.25rem;border-bottom:1px solid rgba(30,58,95,.4);z-index:99;text-align:center;align-items:center}
   .nav-hamburger{display:flex}
-  /* Hero stats: single column on mobile */
-  .hero-stats{grid-template-columns:1fr;gap:1.25rem}
-  .hero-stat{padding:0!important;border:none!important;border-top:1px solid rgba(30,58,95,.4)!important;padding-top:1.25rem!important}
+
+  /* Hide oversized hero title on mobile — wordmark in nav is enough */
+  .hero-title{display:none}
+
+  /* Hero: center everything */
+  .hero{padding:100px 0 72px;text-align:center}
+  .hero-inner{max-width:100%}
+  .hero-tag{display:flex;justify-content:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-body{margin-left:auto;margin-right:auto;text-align:center}
+  .hero-actions{flex-direction:column;align-items:center}
+  .hero-actions .btn-primary,.hero-actions .btn-outline{width:100%;justify-content:center}
+
+  /* Hero stats: single column, centered */
+  .hero-stats{grid-template-columns:1fr;gap:0;text-align:center}
+  .hero-stat{padding:1.25rem 0!important;border:none!important;border-top:1px solid rgba(30,58,95,.4)!important}
   .hero-stat:first-child{border-top:none!important;padding-top:0!important}
   .hero-stat:nth-child(2){border-left:none!important;padding-left:0!important}
-  .hero-stat:nth-child(3){border-top:1px solid rgba(30,58,95,.4)!important}
   .hero-stat:nth-child(4){border-left:none!important;padding-left:0!important}
+  .hero-stat-num{display:block}
+  .hero-stat-label{display:block}
+
+  /* Thesis: center */
+  .thesis-section .eyebrow{text-align:center}
+  .thesis-statement{text-align:center}
+  .thesis-body{text-align:center}
+  .advantage-item{flex-direction:column;align-items:center;text-align:center}
+  .advantage-num{padding-top:0}
+
+  /* Markets: already centered, ensure grid is 1 col */
   .markets-grid{grid-template-columns:1fr}
+
+  /* Roadmap: center */
   .roadmap-track{grid-template-columns:1fr}
+  .roadmap-section .eyebrow{text-align:center}
+  .roadmap-section .section-title{text-align:center}
+  .roadmap-section .rule{margin-left:auto;margin-right:auto}
+  .roadmap-section .section-intro{text-align:center;margin-left:auto;margin-right:auto}
+  .phase-card{text-align:center;display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem 2rem}
+  .phase-dot{margin-bottom:1rem}
+  .phase-milestone,.phase-expand-hint{justify-content:center}
+  .phase-detail-inner{text-align:center}
+
+  /* Phase 1 scope: center */
+  .scope-section .eyebrow{text-align:center}
+  .scope-section .section-title{text-align:center}
+  .scope-section .rule{margin-left:auto;margin-right:auto}
+  .scope-section .section-intro{text-align:center;margin-left:auto;margin-right:auto}
+  .scope-item{flex-direction:column;align-items:center;text-align:center}
+  .scope-num{padding-top:0}
+  .phase1-output{text-align:center}
+  .path-step{flex-direction:column;align-items:center;text-align:center}
+  .step-num{padding-top:0}
+
+  /* Tech: center */
+  .tech-section .eyebrow{text-align:center}
+  .tech-section .section-title{text-align:center}
+  .tech-section .rule{margin-left:auto;margin-right:auto}
+  .tech-section .section-intro{text-align:center;margin-left:auto;margin-right:auto}
   .tech-grid{grid-template-columns:1fr}
+  .tech-card{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .tech-card-icon{margin-left:auto;margin-right:auto}
+
+  /* Execution: center */
+  .exec-section .eyebrow{text-align:center}
+  .exec-section .section-title{text-align:center}
+  .exec-section .rule{margin-left:auto;margin-right:auto}
+  .exec-section .section-intro{text-align:center;margin-left:auto;margin-right:auto}
   .exec-grid{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column}
+  .exec-card{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .exec-card-icon{margin-left:auto;margin-right:auto}
+
+  /* Contact: center */
+  .contact-section .eyebrow{text-align:center}
+  .contact-big{text-align:center}
+  .contact-body{text-align:center}
+  .contact-form-side{align-items:stretch}
+  .contact-note{text-align:center}
+  .contact-form-side .btn-primary{width:100%;justify-content:center}
+
+  /* Footer: center */
+  .footer-inner{grid-template-columns:1fr;gap:2rem;text-align:center}
+  .footer-brand{align-items:center}
+  .footer-nav{align-items:center}
+  .footer-copy{text-align:center}
+
+  /* Thesis section center */
+  .thesis-section .eyebrow{text-align:center}
+
+  /* General */
   .container{padding:0 1.5rem}
-  .hero{padding:110px 0 80px}
   .hero-wafer{display:none}
+  .section{padding:72px 0}
 }
   </style>
 </head>
