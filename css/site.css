@@ -652,3 +652,9 @@ h1, h2, .sec-lead, .why-close { text-wrap: balance; }
   .app h3 { font-size: 1.6rem; }
   .why-card h3 { font-size: 1.35rem; }
 }
+
+@media (max-width: 700px) {
+  .gov-name { white-space: nowrap; font-size: min(4.4vw, 1.25rem); }
+  #contact-h { font-size: min(7.4vw, 3rem); }
+  .gov-card { padding: 28px 18px; }
+}
