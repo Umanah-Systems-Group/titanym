@@ -71,8 +71,9 @@
           <a href="#government" class="btn btn-line">Government &amp; Partnerships</a>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="wafer3d" id="hero-wafer">
+      <div class="hero-visual">
+        <div class="gl-view" id="hero-gl" data-src="images/titanym-wafer.glb" role="img" aria-label="3D model of the Titanym wafer: III-nitride RF on top, sapphire in the middle, SiGe electronics below. Drag to rotate."></div>
+        <div class="wafer3d" id="hero-wafer" aria-hidden="true">
           <div class="w-stage">
             <div class="w-layer w-sige" data-slices="7"></div>
             <div class="w-layer w-sapph" data-slices="10"></div>
@@ -82,7 +83,8 @@
           </div>
           <div class="w-shadow"></div>
         </div>
-        <ul class="hero-legend">
+        <p class="drag-hint" aria-hidden="true"><span class="drag-icon"></span>Drag to spin 360&deg;</p>
+        <ul class="hero-legend" aria-hidden="true">
           <li><b class="sw sw-rf"></b>III-nitride RF</li>
           <li><b class="sw sw-sa"></b>Sapphire</li>
           <li><b class="sw sw-si"></b>SiGe electronics</li>
@@ -215,8 +217,9 @@
           </ol>
           <div class="step-dots" id="step-dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
         </div>
-        <div class="tech-visual" aria-hidden="true">
-          <div class="wafer3d big" id="cut-wafer" data-layer="all">
+        <div class="tech-visual">
+          <div class="gl-view big" id="cut-gl" role="img" aria-label="Exploded 3D view of the Titanym wafer layers. Drag to rotate."></div>
+          <div class="wafer3d big" id="cut-wafer" data-layer="all" aria-hidden="true">
             <div class="w-stage">
               <div class="w-layer w-sige" data-slices="7" data-tag="sige"></div>
               <div class="w-layer w-sapph" data-slices="10" data-tag="sapphire">
@@ -506,5 +509,7 @@
 </footer>
 
 <script src="js/site.js" defer></script>
+<script type="importmap">{ "imports": { "three": "./js/vendor/three.module.min.js" } }</script>
+<script type="module" src="js/wafer-gl.js"></script>
 </body>
 </html>

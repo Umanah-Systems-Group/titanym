@@ -8,12 +8,28 @@ Static marketing site for Titanym Inc., which is developing a two-sided sapphire
 index.html          the page
 css/site.css        styles (brand tokens at the top)
 js/site.js          3D wafer builder, hero signal field, before/after diagram, pinned scroll cutaway, entrances, contact form
-images/             Awardable badges, favicon, social card (rendered from the hero)
+js/wafer-gl.js      three.js viewer for the Blender wafer: drag to spin 360°, scroll cutaway (falls back to the CSS wafer without WebGL)
+js/vendor/          three.js r170 (MIT) and the GLTF loader, served locally
+images/             Awardable badges, favicon, social card, titanym-wafer.glb (the 3D model)
+blender/            scripts that build the 3D model in Blender
 ```
 
 No build step. Vercel serves the repository root as-is.
 
-All illustrations are drawn in code (CSS 3D wafer, inline SVG scenes, canvas field). No pitch-deck artwork is used.
+All illustrations are drawn in code (Blender model, inline SVG scenes, canvas field). No pitch-deck artwork is used.
+
+## 3D wafer model
+
+`images/titanym-wafer.glb` is built in Blender from `blender/`. With the `bpy` package (Blender as a Python module, Python 3.13):
+
+```
+pip install bpy
+python blender/textures.py /tmp/tex             # draws the wafer face textures
+python blender/build_chip.py /tmp/tex /tmp/out  # models the wafer, exports the .glb, renders a still, saves the .blend
+cp /tmp/out/titanym-wafer.glb images/
+```
+
+The model has named nodes `RF`, `Sapphire`, `SiGe` and `Vias`; `js/wafer-gl.js` moves them apart for the exploded views.
 
 ## Contact form
 

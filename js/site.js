@@ -195,7 +195,7 @@
       dots.forEach(function (s, i) { s.classList.toggle('is-on', i === idx); });
       cut.dataset.layer = steps[idx].dataset.layer;
     }
-    if (r.bottom < 0 || r.top > window.innerHeight) return;
+    if (r.bottom < 0 || r.top > window.innerHeight || visual.classList.contains('gl-on')) return;
     var vr = visual.getBoundingClientRect();
     var show = ex > d * 0.08;
     var layer = cut.dataset.layer;
