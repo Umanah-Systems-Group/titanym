@@ -144,7 +144,27 @@
     thumb.style.setProperty('--tl', on.offsetLeft + 'px');
     thumb.style.setProperty('--tw', on.offsetWidth + 'px');
   };
+  var clips = {};
+  ['today', 'fwd', 'rev', 'ti'].forEach(function (n) { clips[n] = fig.querySelector('.v-' + n); });
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var playClip = function (v) {
+    try { v.currentTime = 0; } catch (e) {}
+    var go = function () {
+      Object.keys(clips).forEach(function (n) { clips[n].classList.toggle('is-on', clips[n] === v); });
+    };
+    var pr = v.play();
+    if (pr && pr.then) pr.then(go, go); else go();
+  };
+  var runClips = function (mode) {
+    if (!clips.today) return;
+    if (calm) return playClip(mode === 'titanym' ? clips.ti : clips.today);
+    var via = mode === 'titanym' ? clips.fwd : clips.rev;
+    var end = mode === 'titanym' ? clips.ti : clips.today;
+    via.onended = function () { if (fig.dataset.mode === mode) playClip(end); };
+    playClip(via);
+  };
   var setMode = function (mode) {
+    if (fig.dataset.mode !== mode) runClips(mode);
     fig.dataset.mode = mode;
     swBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.mode === mode)); });
     placeThumb();
@@ -165,9 +185,32 @@
         cycle = setInterval(function () {
           if (userPicked) return clearInterval(cycle);
           setMode(fig.dataset.mode === 'today' ? 'titanym' : 'today');
-        }, 5200);
+        }, 7500);
       }
     }, { threshold: 0.5 }).observe(fig);
+  }
+
+  /* Rendered loops play only while on screen, and load when first needed. */
+  var loops = document.querySelectorAll('video[data-lazy]');
+  var wake = function (v) {
+    if (v.dataset.lazy === 'on') return;
+    v.dataset.lazy = 'on';
+    v.querySelectorAll('source[data-src]').forEach(function (s) { s.src = s.dataset.src; });
+    v.load();
+  };
+  if ('IntersectionObserver' in window) {
+    var loopIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) {
+          wake(v);
+          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+        } else { v.pause(); }
+      });
+    }, { rootMargin: '200px 0px' });
+    loops.forEach(function (v) { loopIO.observe(v); });
+  } else {
+    loops.forEach(function (v) { v.autoplay = true; wake(v); });
   }
 
   /* Pinned cutaway: scroll pulls the wafer apart and walks through each layer. */
@@ -179,6 +222,20 @@
   var tags = document.querySelectorAll('.w-tag');
   var faces = {};
   cut.querySelectorAll('.w-layer').forEach(function (l) { faces[l.dataset.tag] = l.querySelector('.face'); });
+  var cue = document.querySelector('.tech-cue');
+  var cueN = document.getElementById('tech-cue-n');
+  var ticks = document.querySelector('.tr-ticks');
+  if (ticks) {
+    var ns = 'http://www.w3.org/2000/svg';
+    for (var t = 0; t < 120; t++) {
+      var major = t % 10 === 0, ang = t * Math.PI / 60, r0 = major ? 352 : 364;
+      var ln = document.createElementNS(ns, 'line');
+      ln.setAttribute('x1', (400 + r0 * Math.cos(ang)).toFixed(1)); ln.setAttribute('y1', (400 + r0 * Math.sin(ang)).toFixed(1));
+      ln.setAttribute('x2', (400 + 372 * Math.cos(ang)).toFixed(1)); ln.setAttribute('y2', (400 + 372 * Math.sin(ang)).toFixed(1));
+      if (major) ln.setAttribute('class', 'major');
+      ticks.appendChild(ln);
+    }
+  }
   var current = -1;
   var updateTech = function () {
     var r = tech.getBoundingClientRect();
@@ -189,6 +246,11 @@
     var ex = easeInOut(clamp(p / 0.18, 0, 1)) * d * 0.3;
     cut.style.setProperty('--ex', ex.toFixed(2));
     cut.style.setProperty('--rz', (-34 + p * 64).toFixed(2) + 'deg');
+    if (cue) {
+      cue.style.setProperty('--tp', p.toFixed(3));
+      cue.classList.toggle('is-done', p > 0.94);
+      cueN.textContent = '0' + (idx + 1) + ' / 0' + steps.length;
+    }
     if (idx !== current) {
       current = idx;
       steps.forEach(function (s, i) { s.classList.toggle('is-on', i === idx); });
@@ -236,26 +298,6 @@
     window.addEventListener('scroll', still, { passive: true });
     window.addEventListener('resize', still);
     document.querySelectorAll('svg').forEach(function (s) { if (s.pauseAnimations) s.pauseAnimations(); });
-  }
-
-  /* Lattice drawing for the materials card. */
-  var lat = document.getElementById('lattice');
-  if (lat) {
-    var ns = 'http://www.w3.org/2000/svg';
-    for (var row = 0; row < 8; row++) {
-      for (var col = 0; col < 16; col++) {
-        var cx = 14 + col * 14 + (row % 2 ? 7 : 0);
-        var cy = 11 + row * 14;
-        if (cx > 232) continue;
-        var c = document.createElementNS(ns, 'circle');
-        c.setAttribute('cx', cx);
-        c.setAttribute('cy', cy);
-        c.setAttribute('r', 3.2);
-        if ((row * 3 + col) % 5 === 0) c.setAttribute('class', 'ge');
-        c.style.setProperty('--d', Math.round(Math.hypot(cx - 120, cy - 60) * 18));
-        lat.appendChild(c);
-      }
-    }
   }
 
   /* Contact form: posts to Formspree and reports success only on an OK response. */

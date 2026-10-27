@@ -75,15 +75,53 @@ def band(name, r, z0, z1, mat):
     scene.collection.objects.link(ob)
     return ob
 
-def layer(name, thick, top_mat, side_mat, bottom_mat, rim_mat=None):
+def sector(name, a0, a1, h, top_mat, bottom_mat, side_mat, cut_mat, rim_mat=None, r=1.0):
+    """One pie piece of a wafer layer, from angle a0 to a1 (degrees), with flat cut faces."""
+    n = max(4, int(SEG * (a1 - a0) / 360))
+    angs = [math.radians(a0 + (a1 - a0) * i / n) for i in range(n + 1)]
+    mats = [top_mat, bottom_mat, side_mat, cut_mat] + ([rim_mat] if rim_mat else [])
+    me = bpy.data.meshes.new(name)
+    for m in mats: me.materials.append(m)
+    bm = bmesh.new()
+    uv = bm.loops.layers.uv.new()
+    def v(x, y, z): return bm.verts.new((x, y, z))
+    ct, cb = v(0, 0, h), v(0, 0, -h)
+    top = [v(r * math.cos(a), r * math.sin(a), h) for a in angs]
+    bot = [v(r * math.cos(a), r * math.sin(a), -h) for a in angs]
+    def face(vs, mi):
+        f = bm.faces.new(vs); f.material_index = mi
+        for loop in f.loops:
+            x, y, _ = loop.vert.co
+            loop[uv].uv = ((x / r + 1) / 2, (y / r + 1) / 2)
+        return f
+    for i in range(n):
+        face((ct, top[i], top[i + 1]), 0)
+        face((cb, bot[i + 1], bot[i]), 1)
+        f = face((bot[i], bot[i + 1], top[i + 1], top[i]), 2); f.smooth = True
+    face((cb, ct, top[0], bot[0]), 3)          # cut face at a0
+    face((ct, cb, bot[-1], top[-1]), 3)        # cut face at a1
+    if rim_mat:
+        rr = r * 1.003
+        rl = [v(rr * math.cos(a), rr * math.sin(a), h - 0.006) for a in angs]
+        rh = [v(rr * math.cos(a), rr * math.sin(a), h + 0.002) for a in angs]
+        for i in range(n):
+            f = face((rl[i], rl[i + 1], rh[i + 1], rh[i]), 4); f.smooth = True
+    bm.normal_update()
+    bm.to_mesh(me); bm.free()
+    ob = bpy.data.objects.new(name, me)
+    scene.collection.objects.link(ob)
+    return ob
+
+WEDGE = (-135, -45)   # the cutaway wedge faces the viewer (Blender -Y is glTF +Z)
+
+def layer(name, thick, top_mat, side_mat, bottom_mat, cut_mat, rim_mat=None):
     root = bpy.data.objects.new(name, None)
     scene.collection.objects.link(root)
     h = thick / 2
-    link(disc(f'{name}_top', 1.0, h, top_mat), root)
-    link(disc(f'{name}_bottom', 1.0, -h, bottom_mat, flip=True), root)
-    link(band(f'{name}_side', 1.0, -h, h, side_mat), root)
-    if rim_mat:  # bright edge line around the top face
-        link(band(f'{name}_rim', 1.003, h - 0.006, h + 0.002, rim_mat), root)
+    link(sector(f'{name}_main', WEDGE[1], WEDGE[0] + 360, h, top_mat, bottom_mat, side_mat, cut_mat, rim_mat), root)
+    wedge = bpy.data.objects.new(f'{name}_wedge', None)
+    link(wedge, root)
+    link(sector(f'{name}_wedgebody', WEDGE[0], WEDGE[1], h, top_mat, bottom_mat, side_mat, cut_mat, rim_mat), wedge)
     return root
 
 # Materials
@@ -97,28 +135,27 @@ sa_bottom = material('Sapphire underside', (0.1, 0.25, 0.75, 1), rough=0.1, emit
 si_top = material('SiGe face', tex='sige_color.jpg', emit_tex='sige_emit.jpg', emit_strength=2.0, metal=0.5, rough=0.3)
 si_side = material('SiGe edge', (0.25, 0.32, 0.42, 1), metal=1.0, rough=0.25)
 blue_rim = material('Blue rim', (0.35, 0.6, 1.0, 1), metal=0.8, rough=0.2, emit=(0.3, 0.55, 1.0, 1), emit_strength=1.6)
-via_mat = material('Via', (1.0, 0.78, 0.35, 1), metal=0.5, rough=0.3, emit=(1.0, 0.75, 0.3, 1), emit_strength=3.0)
+rf_cut = material('RF cut', (0.32, 0.22, 0.08, 1), metal=0.9, rough=0.3, emit=(0.91, 0.55, 0.15, 1), emit_strength=0.5)
+sa_cut = material('Sapphire cut', (0.15, 0.38, 1.0, 1), rough=0.05, emit=(0.2, 0.45, 1.0, 1), emit_strength=2.2, alpha=0.85)
+si_cut = material('SiGe cut', (0.3, 0.37, 0.47, 1), metal=0.9, rough=0.3, emit=(0.3, 0.5, 0.9, 1), emit_strength=0.4)
 
-# Layers, assembled (the web viewer moves them apart along the stack axis)
-rf = layer('RF', 0.05, rf_top, rf_side, dark, gold_rim); rf.location.z = 0.085
-sa = layer('Sapphire', 0.12, sa_top, sa_side, sa_bottom)
-si = layer('SiGe', 0.05, si_top, si_side, dark, blue_rim); si.location.z = -0.085
-
-# Vias through the sapphire: unit height, scaled by the viewer to span the gaps
-vias = bpy.data.objects.new('Vias', None); scene.collection.objects.link(vias)
-for i, (x, y) in enumerate([(-0.42, 0.18), (0.05, 0.46), (0.38, -0.1), (-0.12, -0.38), (0.22, 0.2), (-0.3, -0.05)]):
-    bpy.ops.mesh.primitive_cylinder_add(vertices=12, radius=0.011, depth=1.0, location=(x, y, 0))
-    v = bpy.context.object; v.name = f'Via{i}'; v.data.materials.append(via_mat)
-    link(v, vias)
-vias.scale.z = 0.17
+# Layers, assembled (the web viewer moves them apart and slides the wedges out)
+rf = layer('RF', 0.05, rf_top, rf_side, dark, rf_cut, gold_rim); rf.location.z = 0.085
+sa = layer('Sapphire', 0.12, sa_top, sa_side, sa_bottom, sa_cut)
+si = layer('SiGe', 0.05, si_top, si_side, si_top, si_cut, blue_rim); si.location.z = -0.085
 
 bpy.ops.export_scene.gltf(
     filepath=f'{OUT}/titanym-wafer.glb', export_format='GLB',
     export_image_format='JPEG', export_jpeg_quality=85,
     export_yup=True, export_apply=False, export_lights=False, export_cameras=False)
 
+import os
+if os.environ.get('NO_RENDER'):
+    bpy.ops.wm.save_as_mainfile(filepath=f'{OUT}/titanym-wafer.blend'); sys.exit(0)
+
 # Poster still rendered in Cycles, exploded, for the page fallback and social card
-rf.location.z = 0.42; si.location.z = -0.42; vias.scale.z = 0.78
+rf.location.z = 0.42; si.location.z = -0.42
+for n in ('RF_wedge', 'Sapphire_wedge', 'SiGe_wedge'): bpy.data.objects[n].location.y = -0.5
 world = bpy.data.worlds.new('W'); scene.world = world; world.use_nodes = True
 world.node_tree.nodes['Background'].inputs['Color'].default_value = (0.012, 0.02, 0.035, 1)
 world.node_tree.nodes['Background'].inputs['Strength'].default_value = 1.0

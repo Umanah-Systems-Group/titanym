@@ -63,7 +63,7 @@ class WaferView {
 
     this.camera = new THREE.PerspectiveCamera(28, 1, 0.1, 50);
 
-    // The spin rig: yaw (drag left/right, full 360°) inside a tilt (drag up/down, limited).
+    // The spin rig: yaw (drag left/right) inside a tilt (drag up/down), both a full 360°.
     this.tilt = new THREE.Group();
     this.spin = new THREE.Group();
     this.tilt.add(this.spin);
@@ -85,10 +85,13 @@ class WaferView {
       RF: model.getObjectByName('RF'),
       Sapphire: model.getObjectByName('Sapphire'),
       SiGe: model.getObjectByName('SiGe'),
-      Vias: model.getObjectByName('Vias'),
     };
-    this.viaMats = [];
-    this.nodes.Vias.traverse((o) => { if (o.isMesh) this.viaMats.push(o.material); });
+    // Each layer has a pie-slice wedge that slides out towards the viewer for the cutaway.
+    this.wedges = ['RF', 'Sapphire', 'SiGe'].map((n) => model.getObjectByName(`${n}_wedge`)).filter(Boolean);
+    this.cutMats = [];
+    model.traverse((o) => { if (o.isMesh && /cut/i.test(o.material.name)) this.cutMats.push(o.material); });
+    this.cutaway = 0;
+    this.scrollYaw = 0;
     this.dim = { RF: 1, Sapphire: 1, SiGe: 1 };
 
     const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTexture(), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
@@ -112,7 +115,7 @@ class WaferView {
       lastX = e.clientX; lastY = e.clientY;
       this.vel = dx * 0.0085;
       this.yaw += this.vel;
-      this.targetPitch = clamp(this.targetPitch + dy * 0.005, -0.45, 0.55);
+      this.targetPitch += dy * 0.0075; // free: flip it over to see the underside
     });
     const end = () => { this.dragging = false; this.idle = 0; el.classList.remove('is-grabbing'); };
     cv.addEventListener('pointerup', end);
@@ -127,8 +130,8 @@ class WaferView {
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
     // Fit the wafer (radius 1) plus the exploded stack in view, from a raised angle.
-    const fitH = this.mode === 'hero' ? 2.35 : 3.1;
-    const fitW = this.mode === 'hero' ? 2.3 : (w > 520 ? 3.0 : 2.4);
+    const fitH = this.mode === 'hero' ? 2.35 : 3.25;
+    const fitW = this.mode === 'hero' ? 2.3 : (w > 520 ? 3.4 : 2.8);
     const fov = THREE.MathUtils.degToRad(this.camera.fov);
     const distH = fitH / 2 / Math.tan(fov / 2);
     const distW = fitW / 2 / Math.tan(fov / 2) / this.camera.aspect;
@@ -137,7 +140,7 @@ class WaferView {
     this.camera.position.set(0, Math.sin(elev) * dist, Math.cos(elev) * dist);
     this.camera.lookAt(0, 0, 0);
     // In the wide cutaway, sit the wafer left of centre so the layer labels fit on the right.
-    if (this.mode === 'cut' && w > 520) this.camera.setViewOffset(w, h, w * 0.12, 0, w, h);
+    if (this.mode === 'cut' && w > 520) this.camera.setViewOffset(w, h, w * 0.1, 0, w, h);
     else this.camera.clearViewOffset();
     this.camera.updateProjectionMatrix();
   }
@@ -146,10 +149,21 @@ class WaferView {
     if (!this.dragging) {
       this.idle += dt;
       this.vel *= Math.pow(0.04, dt);
-      const auto = reduced ? 0 : (this.mode === 'hero' ? 0.28 : 0.12);
       const blend = clamp((this.idle - 1.2) / 1.5, 0, 1);
-      this.yaw += this.vel + auto * dt * blend;
-      if (this.idle > 2.5) this.targetPitch *= Math.pow(0.5, dt);
+      if (this.mode === 'hero') {
+        this.yaw += this.vel + (reduced ? 0 : 0.28) * dt * blend;
+      } else {
+        // The cutaway keeps its open wedge facing the viewer, turning gently with the scroll.
+        this.yaw += this.vel;
+        const target = this.scrollYaw;
+        const near = target + Math.round((this.yaw - target) / (Math.PI * 2)) * Math.PI * 2;
+        this.yaw += (near - this.yaw) * Math.min(1, dt * 2.5) * blend;
+      }
+      if (this.idle > 4) {
+        // Settle back upright after a flip, by the shortest way round.
+        const up = Math.round(this.targetPitch / (Math.PI * 2)) * Math.PI * 2;
+        this.targetPitch += (up - this.targetPitch) * Math.min(1, dt * 1.5);
+      }
     }
     this.pitch += (this.targetPitch - this.pitch) * Math.min(1, dt * 8);
     this.spin.rotation.y = this.yaw;
@@ -160,7 +174,7 @@ class WaferView {
     const gap = ex;
     this.nodes.RF.position.y = BASE.RF + gap;
     this.nodes.SiGe.position.y = BASE.SiGe - gap;
-    this.nodes.Vias.scale.y = 0.17 + gap * 2;
+    this.wedges.forEach((w) => { w.position.z = this.cutaway * 0.55; });
 
     const want = this.layer;
     for (const key of ['RF', 'Sapphire', 'SiGe']) {
@@ -176,9 +190,9 @@ class WaferView {
         m.emissiveIntensity = m.userData.baseEmissive * (0.35 + 0.65 * d);
       });
     }
-    const viaOn = this.mode === 'hero' || want === 'int' || want === 'all';
-    const pulse = want === 'int' ? 1.6 + 1.4 * Math.sin(t * 6) : 1;
-    this.viaMats.forEach((m) => { m.emissiveIntensity = m.userData.baseEmissive * (viaOn ? pulse : 0.2); m.transparent = true; m.opacity = viaOn ? 1 : 0.25; });
+    // "The paths between": the cut faces of the wafer pulse.
+    const pulse = want === 'int' ? 1.6 + 1.2 * Math.sin(t * 5) : 1;
+    this.cutMats.forEach((m) => { m.emissiveIntensity = m.userData.baseEmissive * pulse * (m.opacity > 0.5 ? 1 : 0.4); });
     this.glow.material.opacity = 0.6 + 0.4 * this.dim.Sapphire;
 
     this.renderer.render(this.scene, this.camera);
@@ -237,7 +251,9 @@ async function start() {
     if (cut) {
       const r = tech.getBoundingClientRect();
       const p = clamp(-r.top / (r.height - window.innerHeight), 0, 1);
-      cut.explode = ease(clamp(p / 0.18, 0, 1)) * 0.42;
+      cut.cutaway = ease(clamp(p / 0.1, 0, 1));
+      cut.explode = ease(clamp((p - 0.06) / 0.16, 0, 1)) * 0.42;
+      cut.scrollYaw = -0.6 + p * 1.2;
       cut.layer = cutWafer ? cutWafer.dataset.layer : 'all';
     }
     views.forEach((v) => { if (v.visible) v.update(dt, t); });

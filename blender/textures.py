@@ -94,3 +94,38 @@ col, emi = die_field(11, (14, 22, 36), (26, 40, 62), (110, 150, 200), (200, 214,
 rim(col, (150, 180, 220), 22); rim(emi, (90, 150, 255), 10)
 col.save(f'{OUT}/sige_color.jpg', quality=88); emi.resize((1024, 1024), Image.LANCZOS).save(f'{OUT}/sige_emit.jpg', quality=85)
 print('textures ok')
+
+# ---- Textures for the rendered scenes (problem diagram, cards, applications) ----
+def die_tile(seed, size, base, block, line, pad, pitch):
+    rnd = random.Random(seed)
+    im = Image.new('RGB', (size, size), base)
+    d = ImageDraw.Draw(im)
+    for y in range(0, size, pitch):
+        for x in range(0, size, pitch):
+            d.rectangle((x + 3, y + 3, x + pitch - 3, y + pitch - 3), outline=line, width=2)
+            for _ in range(rnd.randint(1, 3)):
+                bw, bh = rnd.randint(8, pitch // 2), rnd.randint(6, pitch // 2)
+                bx, by = x + rnd.randint(6, pitch - bw - 6), y + rnd.randint(6, pitch - bh - 6)
+                d.rectangle((bx, by, bx + bw, by + bh), fill=block)
+    for k in range(0, size, 24):  # bond pads around the edge
+        for (px, py) in ((k + 6, 4), (k + 6, size - 14), (4, k + 6), (size - 14, k + 6)):
+            d.rectangle((px, py, px + 10, py + 10), fill=pad)
+    return im
+
+die_tile(3, 1024, (214, 150, 52), (150, 96, 24), (110, 70, 18), (255, 226, 160), 256).save(f'{OUT}/die_gan.jpg', quality=90)
+die_tile(5, 1024, (150, 170, 192), (86, 104, 128), (60, 78, 100), (235, 240, 246), 256).save(f'{OUT}/die_sige.jpg', quality=90)
+
+# Circuit board: dark solder mask with copper traces and vias
+rnd = random.Random(21)
+pcb = Image.new('RGB', (2048, 1024), (12, 24, 38))
+d = ImageDraw.Draw(pcb)
+for _ in range(260):
+    x, y = rnd.randint(0, 2048), rnd.randint(0, 1024)
+    L = rnd.randint(40, 260)
+    if rnd.random() < .5:
+        d.line((x, y, x + L, y, x + L + 30, y + 30), fill=(34, 56, 80), width=4)
+    else:
+        d.line((x, y, x, y + L, x + 30, y + L + 30), fill=(34, 56, 80), width=4)
+    d.ellipse((x - 6, y - 6, x + 6, y + 6), fill=(150, 120, 60))
+pcb.save(f'{OUT}/pcb.jpg', quality=88)
+print('scene textures ok')
