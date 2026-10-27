@@ -1,903 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Titanym | Specialized Semiconductor Manufacturing Platform</title>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Titanym is a Umanah Systems Group program building a specialized semiconductor manufacturing platform around single-crystal silicon-germanium on sapphire. Built for space, defense, RF, and advanced device markets where standard process flows fall short." />
-  <meta name="keywords" content="silicon germanium semiconductor, SiGe on sapphire, semiconductor manufacturing, space electronics, radiation hardened semiconductors, RF semiconductors, defense electronics, heterogeneous integration, low temperature epitaxy, compound semiconductor, Umanah Systems Group, Titanym" />
-  <meta name="author" content="Umanah Systems Group" />
-  <meta name="robots" content="index, follow" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titanym | Advanced RF &amp; SiGe Semiconductor Integration</title>
+  <meta name="description" content="Titanym is developing a two-sided sapphire semiconductor platform integrating III-nitride RF and SiGe electronics for defense, space, and telecommunications applications.">
   <meta name="theme-color" content="#080E18">
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Titanym" />
-  <meta property="og:title" content="Titanym | Specialized Semiconductor Manufacturing Platform" />
-  <meta property="og:description" content="Building a specialized semiconductor manufacturing platform around single-crystal SiGe on sapphire. 4x carrier mobility. 8-step manufacturing process. Built for space, defense, and RF markets." />
-  <meta property="og:image" content="https://titanym.com/images/og-social-share.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://titanym.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Titanym | Specialized Semiconductor Manufacturing Platform" />
-  <meta name="twitter:description" content="Building a specialized semiconductor manufacturing platform around single-crystal SiGe on sapphire. Built for space, defense, and RF markets where silicon falls short." />
-  <meta name="twitter:image" content="https://titanym.com/images/og-social-share.jpg" />
-  <link rel="canonical" href="https://titanym.com" />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://titanym.com">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Titanym">
+  <meta property="og:title" content="Titanym | Advanced RF &amp; SiGe Semiconductor Integration">
+  <meta property="og:description" content="A two-sided sapphire semiconductor platform integrating III-nitride RF and SiGe electronics for defense, space, and telecommunications.">
+  <meta property="og:image" content="https://titanym.com/images/og-social-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://titanym.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Titanym | Advanced RF &amp; SiGe Semiconductor Integration">
+  <meta name="twitter:description" content="A two-sided sapphire semiconductor platform integrating III-nitride RF and SiGe electronics for defense, space, and telecommunications.">
+  <meta name="twitter:image" content="https://titanym.com/images/og-social-share.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-  <style>
-:root{
-  --void:#080E18;--navy:#0D1A2E;--carbon:#111827;--steel:#1E3A5F;
-  --horizon:#2A5298;--platinum:#C8D4E0;--mist:#8FA3B8;
-  --amber:#E8A030;--gold:#F0C060;--white:#F4F7FA;--text:#D8E4EF;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Crimson Pro',Georgia,serif;background:var(--void);color:var(--text);line-height:1.7;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
-h1,h2,h3,h4{font-family:'Syne',system-ui,sans-serif;color:var(--white);line-height:1.1}
-.eyebrow{font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
-.section-title{font-size:clamp(2rem,3.5vw,2.9rem);margin-bottom:1.25rem;font-weight:700}
-.section-intro{font-size:1.2rem;color:var(--platinum);max-width:640px;margin-bottom:3rem;line-height:1.8;font-weight:300}
-.container{width:100%;max-width:1100px;margin:0 auto;padding:0 2.5rem}
-.rule{width:48px;height:2px;background:var(--amber);margin-bottom:2.5rem}
-.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--amber);color:var(--void);font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.9rem 2.1rem;border:2px solid var(--amber);transition:background .2s,transform .15s,box-shadow .2s;cursor:pointer}
-.btn-primary:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,160,48,.35)}
-.btn-outline{display:inline-flex;align-items:center;gap:.5rem;color:var(--platinum);font-family:'Syne',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.9rem 2.1rem;border:1.5px solid rgba(200,212,224,.25);transition:border-color .2s,color .2s}
-.btn-outline:hover{border-color:var(--platinum);color:var(--white)}
-.tag{display:inline-block;font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);background:rgba(30,58,95,.5);border:1px solid rgba(143,163,184,.2);padding:.3rem .85rem}
-
-/* BOXED LAYOUT — desktop only */
-.page-box{max-width:1200px;margin:0 auto;background:var(--void);box-shadow:0 0 80px rgba(0,0,0,0.5);position:relative;overflow-x:hidden}
-body{background:#04080F}
-
-/* NAV */
-.site-header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;z-index:100;background:rgba(8,14,24,0);border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
-.site-header.scrolled{background:rgba(8,14,24,.96);border-bottom-color:rgba(30,58,95,.5);backdrop-filter:blur(16px)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-.wordmark{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:var(--amber);letter-spacing:.05em}
-.nav-links{display:flex;align-items:center;gap:2.25rem}
-.nav-links a{font-family:'Syne',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,212,224,.6);transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--white)}
-.nav-links a.nav-cta{color:var(--amber)!important}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.nav-hamburger span{display:block;width:22px;height:2px;background:var(--platinum);border-radius:1px;transition:transform .3s,opacity .3s}
-
-/* HERO */
-.hero{position:relative;min-height:100vh;background:var(--void);display:flex;align-items:center;overflow:hidden;padding:120px 0 100px}
-.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(42,82,152,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(42,82,152,.07) 1px,transparent 1px);background-size:80px 80px}
-.hero-glow{position:absolute;pointer-events:none;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(42,82,152,.15) 0%,transparent 70%);top:-100px;right:-200px}
-.hero-wafer{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:360px;height:360px;pointer-events:none;opacity:.12}
-.hero-inner{position:relative;z-index:2;max-width:680px}
-.hero-tag{margin-bottom:2rem}
-.hero-title{font-family:'Syne',sans-serif;font-size:clamp(4rem,9vw,7.5rem);font-weight:800;color:var(--white);line-height:.9;letter-spacing:-.03em;margin-bottom:.5rem}
-.hero-title .at{color:var(--amber)}
-.hero-sub{font-family:'Crimson Pro',Georgia,serif;font-size:clamp(1.25rem,2.2vw,1.65rem);color:var(--mist);font-weight:300;font-style:italic;margin-bottom:2rem;line-height:1.4}
-.hero-body{font-size:1.15rem;color:rgba(200,212,224,.78);max-width:560px;margin-bottom:.9rem;line-height:1.8;font-weight:300}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.75rem}
-
-/* HERO STATS — horizontal, no stacking */
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:4rem;border-top:1px solid rgba(30,58,95,.6);padding-top:2rem}
-.hero-stat{padding:0 1.5rem}
-.hero-stat:first-child{padding-left:0}
-.hero-stat:last-child{padding-right:0}
-.hero-stat+.hero-stat{border-left:1px solid rgba(30,58,95,.5)}
-.hero-stat-num{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--amber);display:block;margin-bottom:.35rem;white-space:nowrap}
-.hero-stat-label{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);line-height:1.4;display:block}
-
-/* THESIS */
-.thesis-section{background:var(--navy);padding:100px 0;position:relative;overflow:hidden}
-.thesis-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(42,82,152,.6),transparent)}
-.thesis-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(42,82,152,.6),transparent)}
-.thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.thesis-statement{font-family:'Crimson Pro',Georgia,serif;font-size:clamp(1.7rem,2.5vw,2.2rem);color:var(--white);font-weight:300;line-height:1.4;margin-bottom:2rem}
-.thesis-statement em{color:var(--amber);font-style:italic}
-.thesis-body{font-size:1.1rem;color:rgba(200,212,224,.75);line-height:1.8;font-weight:300;margin-bottom:1.1rem}
-.advantage-list{display:flex;flex-direction:column;gap:1.25rem;margin-top:1rem}
-.advantage-item{display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem 1.5rem;background:rgba(8,14,24,.6);border:1px solid rgba(30,58,95,.5);border-left:3px solid var(--amber);transition:border-color .2s,background .2s}
-.advantage-item:hover{background:rgba(30,58,95,.3)}
-.advantage-num{font-family:'Syne',sans-serif;font-size:.68rem;font-weight:800;color:var(--amber);letter-spacing:.1em;padding-top:.1rem;white-space:nowrap}
-.advantage-item h4{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:.35rem;letter-spacing:.02em}
-.advantage-item p{font-size:.95rem;color:var(--mist);line-height:1.65;font-weight:300}
-
-/* MARKETS — centered text */
-.markets-section{background:var(--void);padding:100px 0}
-.markets-section .eyebrow{text-align:center}
-.markets-section .section-title{text-align:center}
-.markets-section .rule{margin-left:auto;margin-right:auto}
-.markets-section .section-intro{margin-left:auto;margin-right:auto;text-align:center}
-.markets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(30,58,95,.3);margin-bottom:3rem}
-.market-card{background:var(--void);padding:2.5rem 2rem;transition:background .25s;position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center}
-.market-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.market-card:hover{background:rgba(30,58,95,.2)}
-.market-card:hover::before{transform:scaleX(1)}
-.market-icon{font-size:2rem;margin-bottom:1.25rem}
-.market-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.75rem;letter-spacing:.02em;text-align:center}
-.market-card p{font-size:1rem;color:var(--mist);line-height:1.7;font-weight:300;text-align:center}
-.market-tag{display:inline-block;margin-top:1rem;font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);background:rgba(232,160,48,.1);border:1px solid rgba(232,160,48,.25);padding:.28rem .7rem}
-
-/* ROADMAP */
-.roadmap-section{background:var(--carbon);padding:100px 0;position:relative}
-.roadmap-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(42,82,152,.5),transparent)}
-.roadmap-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-bottom:3rem}
-.roadmap-track::before{content:'';position:absolute;top:28px;left:calc(12.5%);right:calc(12.5%);height:1px;background:linear-gradient(90deg,var(--amber),rgba(232,160,48,.3) 60%,rgba(30,58,95,.4));z-index:0;pointer-events:none}
-.phase-card{padding:0 1.5rem 2rem;position:relative;z-index:1;cursor:default}
-.phase-card.clickable{cursor:pointer}
-.phase-dot{width:16px;height:16px;border-radius:50%;margin-bottom:1.5rem;border:2px solid rgba(30,58,95,.5);background:var(--carbon);transition:border-color .3s,background .3s,box-shadow .3s}
-.phase-dot.active{background:var(--amber);border-color:var(--amber);box-shadow:0 0 16px rgba(232,160,48,.5)}
-.phase-label{font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;display:block}
-.phase-label.pl{color:rgba(143,163,184,.5)}
-.phase-card h3{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.6rem;letter-spacing:.01em;transition:color .3s}
-.phase-card h3.pt{color:rgba(200,212,224,.4)}
-.phase-card p{font-size:.95rem;color:var(--mist);line-height:1.7;font-weight:300;transition:color .3s}
-.phase-card p.pp{color:rgba(143,163,184,.35)}
-.phase-milestone{display:inline-flex;align-items:center;gap:.4rem;margin-top:.85rem;font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
-.phase-milestone.pm{color:rgba(143,163,184,.3)}
-.milestone-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
-
-/* Interactive phase cards */
-.phase-card.clickable:hover .phase-dot{border-color:var(--amber);background:rgba(232,160,48,.15)}
-.phase-card.clickable:hover h3.pt{color:rgba(200,212,224,.75)}
-.phase-card.clickable:hover p.pp{color:rgba(143,163,184,.7)}
-.phase-card.clickable:hover .phase-milestone.pm{color:rgba(232,160,48,.6)}
-.phase-card.expanded .phase-dot{border-color:var(--amber);background:rgba(232,160,48,.25);box-shadow:0 0 12px rgba(232,160,48,.3)}
-.phase-card.expanded h3.pt{color:var(--white)}
-.phase-card.expanded p.pp{color:var(--mist)}
-.phase-card.expanded .phase-milestone.pm{color:var(--amber)}
-.phase-detail{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:0}
-.phase-detail.open{max-height:300px;opacity:1}
-.phase-detail-inner{padding-top:1rem;border-top:1px solid rgba(30,58,95,.4);margin-top:.75rem}
-.phase-detail-inner p{font-size:.9rem;color:var(--mist);line-height:1.65;font-weight:300}
-.phase-expand-hint{font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(143,163,184,.35);margin-top:.5rem;display:block;transition:color .2s}
-.phase-card.clickable:hover .phase-expand-hint{color:rgba(232,160,48,.5)}
-
-/* SCOPE / PHASE 1 */
-.scope-section{background:var(--navy);padding:100px 0;position:relative;overflow:hidden}
-.scope-section::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(42,82,152,.5),transparent)}
-.scope-cols{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.scope-list{display:flex;flex-direction:column;gap:1rem}
-.scope-item{display:flex;gap:1.25rem;align-items:flex-start;padding:1.35rem 1.5rem;background:rgba(8,14,24,.5);border:1px solid rgba(30,58,95,.4);transition:border-color .2s,background .2s}
-.scope-item:hover{border-color:rgba(232,160,48,.3);background:rgba(30,58,95,.2)}
-.scope-num{font-family:'Syne',sans-serif;font-size:.68rem;font-weight:800;color:var(--amber);padding-top:.1rem;min-width:1.5rem}
-.scope-item h4{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:.35rem}
-.scope-item p{font-size:.95rem;color:var(--mist);line-height:1.65;font-weight:300}
-
-/* Phase 1 output box — no Go/No-Go */
-.phase1-output{background:var(--void);border:1px solid rgba(30,58,95,.5);padding:2.5rem;position:sticky;top:100px}
-.phase1-output-title{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);margin-bottom:1.5rem}
-.phase1-output-headline{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--amber);margin-bottom:1.25rem;letter-spacing:-.01em}
-.phase1-output-body{font-size:1rem;color:var(--mist);line-height:1.75;font-weight:300;margin-bottom:2rem}
-.path-steps{display:flex;flex-direction:column;gap:0;margin-top:2rem}
-.path-step{display:flex;gap:1.25rem;padding:1.1rem 0;border-top:1px solid rgba(30,58,95,.3);align-items:flex-start}
-.step-num{font-family:'Syne',sans-serif;font-size:.68rem;font-weight:800;color:var(--amber);padding-top:.1rem;min-width:2rem}
-.path-step h4{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.25rem}
-.path-step p{font-size:.9rem;color:var(--mist);line-height:1.55;font-weight:300}
-
-/* TECH */
-.tech-section{background:var(--void);padding:100px 0}
-.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;background:rgba(30,58,95,.2);margin-bottom:3rem}
-.tech-card{background:var(--void);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .25s}
-.tech-card:hover{background:rgba(13,26,46,.8)}
-.tech-card-accent{position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--amber);opacity:0;transition:opacity .25s}
-.tech-card:hover .tech-card-accent{opacity:1}
-.tech-card-icon{width:44px;height:44px;margin-bottom:1.5rem;border:1px solid rgba(30,58,95,.6);display:flex;align-items:center;justify-content:center;color:var(--amber)}
-.tech-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.8rem;letter-spacing:.02em}
-.tech-card p{font-size:.98rem;color:var(--mist);line-height:1.75;font-weight:300}
-
-/* EXEC */
-.exec-section{background:var(--carbon);padding:100px 0}
-.exec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.exec-card{padding:2rem 1.75rem;border:1px solid rgba(30,58,95,.4);background:rgba(8,14,24,.5);transition:border-color .2s,background .2s}
-.exec-card:hover{border-color:rgba(232,160,48,.2);background:rgba(30,58,95,.15)}
-.exec-card-icon{color:var(--horizon);margin-bottom:1.25rem}
-.exec-card h3{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.7rem;letter-spacing:.02em}
-.exec-card p{font-size:.95rem;color:var(--mist);line-height:1.75;font-weight:300}
-
-/* CONTACT */
-.contact-section{background:var(--navy);padding:100px 0;position:relative;overflow:hidden}
-.contact-inner-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.contact-big{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:var(--white);line-height:1.05;letter-spacing:-.02em;margin-bottom:1.5rem}
-.contact-big .ca{color:var(--amber)}
-.contact-body{font-size:1.1rem;color:var(--mist);line-height:1.8;font-weight:300;margin-bottom:2rem}
-.contact-form-side{display:flex;flex-direction:column;gap:1rem}
-.contact-row{display:flex;flex-direction:column;gap:.4rem}
-.contact-row label{font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)}
-.contact-input{background:rgba(8,14,24,.7);border:1px solid rgba(30,58,95,.5);color:var(--white);font-family:'Crimson Pro',Georgia,serif;font-size:1.05rem;padding:.8rem 1rem;outline:none;transition:border-color .2s;-webkit-appearance:none}
-.contact-input:focus{border-color:var(--amber)}
-.contact-input::placeholder{color:rgba(143,163,184,.35)}
-select.contact-input{cursor:pointer}
-.contact-note{font-size:.85rem;color:rgba(143,163,184,.5);line-height:1.6;font-weight:300;font-style:italic}
-
-/* FOOTER */
-.site-footer{background:var(--void);border-top:1px solid rgba(30,58,95,.4);padding:56px 0 48px}
-.footer-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:3rem}
-.footer-brand{display:flex;flex-direction:column;gap:.4rem}
-.footer-wordmark{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:var(--amber);letter-spacing:.05em}
-.footer-sub{font-size:.72rem;color:rgba(143,163,184,.4);letter-spacing:.06em;font-family:'Syne',sans-serif;text-transform:uppercase;margin-top:.25rem}
-.footer-nav{display:flex;flex-direction:column;gap:.6rem;align-items:center}
-.footer-nav a{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:600;color:rgba(200,212,224,.4);letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
-.footer-nav a:hover{color:var(--platinum)}
-.footer-copy{text-align:right}
-.footer-copy p{font-size:.7rem;color:rgba(143,163,184,.3);letter-spacing:.04em;font-family:'Syne',sans-serif}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-
-/* RESPONSIVE — TABLET */
-@media(max-width:960px){
-  .thesis-grid{grid-template-columns:1fr;gap:3rem}
-  .markets-grid{grid-template-columns:1fr 1fr}
-  .roadmap-track{grid-template-columns:1fr 1fr}
-  .roadmap-track::before{display:none}
-  .scope-cols{grid-template-columns:1fr;gap:2.5rem}
-  .phase1-output{position:static}
-  .tech-grid{grid-template-columns:1fr}
-  .exec-grid{grid-template-columns:1fr 1fr}
-  .contact-inner-grid{grid-template-columns:1fr;gap:3rem}
-  .footer-inner{grid-template-columns:1fr;gap:2rem}
-  .footer-copy{text-align:left}
-  .footer-nav{align-items:flex-start}
-  .hero-stats{grid-template-columns:1fr 1fr;gap:1.5rem}
-  .hero-stat+.hero-stat{border-left:none}
-  .hero-stat{padding:0}
-  .hero-stat:nth-child(2){border-left:1px solid rgba(30,58,95,.5);padding-left:1.5rem}
-  .hero-stat:nth-child(3){border-top:1px solid rgba(30,58,95,.4);padding-top:1.5rem}
-  .hero-stat:nth-child(4){border-top:1px solid rgba(30,58,95,.4);border-left:1px solid rgba(30,58,95,.5);padding-top:1.5rem;padding-left:1.5rem}
-}
-
-/* RESPONSIVE — MOBILE */
-@media(max-width:640px){
-
-  /* Header full width on mobile */
-  .site-header{left:0;transform:none;max-width:100%}
-  /* Nav: always visible, sticky, wordmark centered */
-  .site-header{background:rgba(8,14,24,.97)!important;border-bottom-color:rgba(30,58,95,.5)!important}
-  .nav-inner{position:relative}
-  .wordmark{position:absolute;left:50%;transform:translateX(-50%)}
-  .nav-hamburger{margin-left:auto}
-  .nav-links{display:none;flex-direction:column}
-  .nav-links.open{display:flex;position:fixed;top:68px;left:0;right:0;background:var(--void);padding:1.5rem 2rem 2rem;gap:1.25rem;border-bottom:1px solid rgba(30,58,95,.4);z-index:99;text-align:center;align-items:center}
-  .nav-hamburger{display:flex}
-
-  /* Hide oversized hero title on mobile — wordmark in nav is enough */
-  .hero-title{display:none}
-
-  /* Hero: center everything */
-  .hero{padding:100px 0 72px;text-align:center}
-  .hero-inner{max-width:100%}
-  .hero-tag{display:flex;justify-content:center}
-  .hero-sub{margin-left:auto;margin-right:auto}
-  .hero-body{margin-left:auto;margin-right:auto;text-align:center}
-  .hero-actions{flex-direction:column;align-items:center}
-  .hero-actions .btn-primary,.hero-actions .btn-outline{width:100%;justify-content:center}
-
-  /* Hero stats: single column, centered */
-  .hero-stats{grid-template-columns:1fr;gap:0;text-align:center}
-  .hero-stat{padding:1.25rem 0!important;border:none!important;border-top:1px solid rgba(30,58,95,.4)!important}
-  .hero-stat:first-child{border-top:none!important;padding-top:0!important}
-  .hero-stat:nth-child(2){border-left:none!important;padding-left:0!important}
-  .hero-stat:nth-child(4){border-left:none!important;padding-left:0!important}
-  .hero-stat-num{display:block}
-  .hero-stat-label{display:block}
-
-  /* Thesis: center */
-  .thesis-section .eyebrow{text-align:center}
-  .thesis-statement{text-align:center}
-  .thesis-body{text-align:center}
-  .advantage-item{flex-direction:column;align-items:center;text-align:center}
-  .advantage-num{padding-top:0}
-
-  /* Markets: already centered, ensure grid is 1 col */
-  .markets-grid{grid-template-columns:1fr}
-
-  /* Roadmap: center */
-  .roadmap-track{grid-template-columns:1fr}
-  .roadmap-section .eyebrow{text-align:center}
-  .roadmap-section .section-title{text-align:center}
-  .roadmap-section .rule{margin-left:auto;margin-right:auto}
-  .roadmap-section .section-intro{text-align:center;margin-left:auto;margin-right:auto}
-  .phase-card{text-align:center;display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem 2rem}
-  .phase-dot{margin-bottom:1rem}
-  .phase-milestone,.phase-expand-hint{justify-content:center}
-  .phase-detail-inner{text-align:center}
-
-  /* Phase 1 scope: center */
-  .scope-section .eyebrow{text-align:center}
-  .scope-section .section-title{text-align:center}
-  .scope-section .rule{margin-left:auto;margin-right:auto}
-  .scope-section .section-intro{text-align:center;margin-left:auto;margin-right:auto}
-  .scope-item{flex-direction:column;align-items:center;text-align:center}
-  .scope-num{padding-top:0}
-  .phase1-output{text-align:center}
-  .path-step{flex-direction:column;align-items:center;text-align:center}
-  .step-num{padding-top:0}
-
-  /* Tech: center */
-  .tech-section .eyebrow{text-align:center}
-  .tech-section .section-title{text-align:center}
-  .tech-section .rule{margin-left:auto;margin-right:auto}
-  .tech-section .section-intro{text-align:center;margin-left:auto;margin-right:auto}
-  .tech-grid{grid-template-columns:1fr}
-  .tech-card{text-align:center;display:flex;flex-direction:column;align-items:center}
-  .tech-card-icon{margin-left:auto;margin-right:auto}
-
-  /* Execution: center */
-  .exec-section .eyebrow{text-align:center}
-  .exec-section .section-title{text-align:center}
-  .exec-section .rule{margin-left:auto;margin-right:auto}
-  .exec-section .section-intro{text-align:center;margin-left:auto;margin-right:auto}
-  .exec-grid{grid-template-columns:1fr}
-  .exec-card{text-align:center;display:flex;flex-direction:column;align-items:center}
-  .exec-card-icon{margin-left:auto;margin-right:auto}
-
-  /* Contact: center */
-  .contact-section .eyebrow{text-align:center}
-  .contact-big{text-align:center}
-  .contact-body{text-align:center}
-  .contact-form-side{align-items:stretch}
-  .contact-note{text-align:center}
-  .contact-form-side .btn-primary{width:100%;justify-content:center}
-
-  /* Footer: center */
-  .footer-inner{grid-template-columns:1fr;gap:2rem;text-align:center}
-  .footer-brand{align-items:center}
-  .footer-nav{align-items:center}
-  .footer-copy{text-align:center}
-
-  /* Thesis section center */
-  .thesis-section .eyebrow{text-align:center}
-
-  /* General */
-  .container{padding:0 1.5rem}
-  .hero-wafer{display:none}
-  .section{padding:72px 0}
-}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
-<div class="page-box">
-<header class="site-header" id="site-header">
-  <div class="container nav-inner">
-    <a href="#" class="wordmark">TITANYM</a>
-    <nav class="nav-links" id="nav-links">
-      <a href="#thesis">Thesis</a>
-      <a href="#markets">Markets</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#phase1">Phase 1</a>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar" id="bar" data-chapter="void">
+  <div class="bar-inner">
+    <a href="#top" class="wordmark" aria-label="Titanym home"><span class="ti">Ti</span>tanym</a>
+    <nav class="bar-nav" aria-label="Main">
       <a href="#technology">Technology</a>
-      <a href="#contact" class="nav-cta">Contact</a>
-    </nav>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<section class="hero" id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <svg class="hero-wafer" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="190" cy="190" r="185" stroke="#C8D4E0" stroke-width="0.5"/>
-    <circle cx="190" cy="190" r="160" stroke="#C8D4E0" stroke-width="0.5"/>
-    <circle cx="190" cy="190" r="120" stroke="#C8D4E0" stroke-width="0.5"/>
-    <circle cx="190" cy="190" r="80" stroke="#C8D4E0" stroke-width="0.5"/>
-    <circle cx="190" cy="190" r="40" stroke="#C8D4E0" stroke-width="0.5"/>
-    <line x1="5" y1="190" x2="375" y2="190" stroke="#C8D4E0" stroke-width="0.3"/>
-    <line x1="190" y1="5" x2="190" y2="375" stroke="#C8D4E0" stroke-width="0.3"/>
-    <line x1="60" y1="60" x2="320" y2="320" stroke="#C8D4E0" stroke-width="0.3"/>
-    <line x1="320" y1="60" x2="60" y2="320" stroke="#C8D4E0" stroke-width="0.3"/>
-    <circle cx="190" cy="190" r="6" fill="#E8A030" opacity="0.5"/>
-  </svg>
-  <div class="container hero-inner">
-    <div class="hero-tag reveal"><span class="tag">A Umanah Systems Group Program</span></div>
-    <h1 class="hero-title reveal"><span class="at">Ti</span>tanym</h1>
-    <p class="hero-sub reveal">Building the semiconductor stack silicon cannot reach.</p>
-    <p class="hero-body reveal">Titanym is a specialized semiconductor manufacturing program developing a process platform around single-crystal silicon-germanium on sapphire. Built for space, defense, RF, and advanced device markets where standard process flows fall short.</p>
-    <p class="hero-body reveal">Phase 1 is underway: process reproduction and materials qualification, before device development begins.</p>
-    <div class="hero-actions reveal">
-      <a href="#contact" class="btn-primary">Request Program Discussion</a>
-      <a href="#thesis" class="btn-outline">See the Thesis</a>
-    </div>
-    <div class="hero-stats reveal">
-      <div class="hero-stat">
-        <span class="hero-stat-num">4x</span>
-        <span class="hero-stat-label">Carrier mobility vs. silicon</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">8 steps</span>
-        <span class="hero-stat-label">vs. 19-step conventional CMOS</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">450-500°C</span>
-        <span class="hero-stat-label">Low-temp growth process</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">Phase 1</span>
-        <span class="hero-stat-label">Current program stage</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="thesis-section" id="thesis">
-  <div class="container">
-    <div class="eyebrow reveal">The Thesis</div>
-    <div class="thesis-grid">
-      <div>
-        <p class="thesis-statement reveal">Silicon is not the ceiling.<br><em>It is the starting point.</em></p>
-        <p class="thesis-body reveal">Single-crystal silicon-germanium grown on sapphire substrates offers a combination of material performance, process economics, and integration potential that silicon alone cannot match. Particularly for device categories where substrate behavior, thermal management, defect control, and heterogeneous integration drive value.</p>
-        <p class="thesis-body reveal">Titanym is not competing with TSMC or Intel on leading-edge logic. The goal is different: own a narrow, high-consequence manufacturing stack that enables device classes standard foundries are not designed to serve.</p>
-      </div>
-      <div class="advantage-list">
-        <div class="advantage-item reveal">
-          <span class="advantage-num">01</span>
-          <div>
-            <h4>Four times the carrier mobility</h4>
-            <p>Single-crystal SiGe delivers substantially higher electron and hole mobility compared to standard silicon, enabling faster, lower-power device performance.</p>
-          </div>
-        </div>
-        <div class="advantage-item reveal">
-          <span class="advantage-num">02</span>
-          <div>
-            <h4>Radically simplified manufacturing</h4>
-            <p>A mask-based deposition process reduces CMOS fabrication from 19 conventional steps to 8, eliminating photoresist, UV exposure, and most selective etching steps.</p>
-          </div>
-        </div>
-        <div class="advantage-item reveal">
-          <span class="advantage-num">03</span>
-          <div>
-            <h4>Low-temperature growth</h4>
-            <p>SiGe-on-sapphire growth at 450 to 500°C versus the conventional 850 to 900°C range. Less thermal load, faster cycle times, higher throughput potential.</p>
-          </div>
-        </div>
-        <div class="advantage-item reveal">
-          <span class="advantage-num">04</span>
-          <div>
-            <h4>Monolithic integration potential</h4>
-            <p>The sapphire substrate enables SiGe electronics on one side and III-nitride device structures on the other, opening paths toward integrated compute and photonics on a single wafer.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="markets-section" id="markets">
-  <div class="container">
-    <div class="eyebrow reveal">Target Markets</div>
-    <h2 class="section-title reveal">Where the process advantage matters most.</h2>
-    <div class="rule reveal"></div>
-    <p class="section-intro reveal">Titanym's commercial focus is on markets where reliability, differentiated process performance, and specialized integration matter more than commodity volume.</p>
-    <div class="markets-grid">
-      <div class="market-card reveal">
-        <div class="market-icon">🛰️</div>
-        <h3>Space and Radiation-Hardened Electronics</h3>
-        <p>SiGe on sapphire demonstrates strong radiation hardness, making it well-suited for satellite systems, deep-space instruments, and mission-critical payloads that cannot tolerate single-event upsets.</p>
-        <span class="market-tag">Near-term</span>
-      </div>
-      <div class="market-card reveal">
-        <div class="market-icon">📡</div>
-        <h3>RF and High-Frequency Communications</h3>
-        <p>SiGe heterojunction bipolar transistors already power RF front-ends in 5G base stations, satellite comms, and radar. The Titanym process opens a pathway to specialized RF device manufacturing.</p>
-        <span class="market-tag">Near-term</span>
-      </div>
-      <div class="market-card reveal">
-        <div class="market-icon">🔬</div>
-        <h3>Aerospace and Defense Sensing</h3>
-        <p>Harsh-environment sensing applications benefit directly from rugged substrate performance, extended operational temperature range, and process-controlled reliability.</p>
-        <span class="market-tag">Near-term</span>
-      </div>
-      <div class="market-card reveal">
-        <div class="market-icon">💡</div>
-        <h3>Optoelectronics and Display</h3>
-        <p>Double-sided sapphire structures enable LED devices on one face and solar or electronic structures on the other, creating a platform for integrated, self-powered display architectures.</p>
-        <span class="market-tag">Mid-term</span>
-      </div>
-      <div class="market-card reveal">
-        <div class="market-icon">⚡</div>
-        <h3>Energy Conversion Devices</h3>
-        <p>SiGe's Type II band-gap alignment enables solar cell architectures with projected efficiencies of 30 to 40%, along with thermoelectric generator applications for waste heat recovery.</p>
-        <span class="market-tag">Mid-term</span>
-      </div>
-      <div class="market-card reveal">
-        <div class="market-icon">🏭</div>
-        <h3>Co-Development Manufacturing</h3>
-        <p>Government agencies, aerospace primes, and specialty hardware companies seeking non-standard semiconductor process support represent a direct co-development and process services opportunity.</p>
-        <span class="market-tag">Phase 2</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="roadmap-section" id="roadmap">
-  <div class="container">
-    <div class="eyebrow reveal">Program Roadmap</div>
-    <h2 class="section-title reveal">Four phases. One platform.</h2>
-    <div class="rule reveal"></div>
-    <p class="section-intro reveal">Titanym builds toward a specialized semiconductor manufacturing platform through a disciplined gate-controlled progression. Click any future phase to learn more.</p>
-    <div class="roadmap-track reveal">
-      <div class="phase-card">
-        <div class="phase-dot active"></div>
-        <span class="phase-label">Now Active</span>
-        <h3>Phase 1. Process Qualification</h3>
-        <p>Reproduce the low-temperature SiGe-on-sapphire growth process in a controlled nanofabrication environment. Characterize crystal quality, defect structure, and repeatability.</p>
-        <div class="phase-milestone"><span class="milestone-dot"></span> Materials Decision</div>
-      </div>
-      <div class="phase-card clickable" id="phase2-card">
-        <div class="phase-dot"></div>
-        <span class="phase-label pl">Phase 2</span>
-        <h3 class="pt">Engineering Services</h3>
-        <p class="pp">Paid feasibility projects and co-development engagements.</p>
-        <div class="phase-milestone pm"><span class="milestone-dot"></span> First Revenue</div>
-        <span class="phase-expand-hint">Click to expand</span>
-        <div class="phase-detail" id="phase2-detail">
-          <div class="phase-detail-inner">
-            <p>Paid feasibility projects, wafer development engagements, custom device prototyping, and process transfer work with government and commercial customers. This phase converts process knowledge into contracted revenue.</p>
-          </div>
-        </div>
-      </div>
-      <div class="phase-card clickable" id="phase3-card">
-        <div class="phase-dot"></div>
-        <span class="phase-label pl">Phase 3</span>
-        <h3 class="pt">Device Manufacturing</h3>
-        <p class="pp">Low-volume specialty manufacturing for high-value customers.</p>
-        <div class="phase-milestone pm"><span class="milestone-dot"></span> Recurring Revenue</div>
-        <span class="phase-expand-hint">Click to expand</span>
-        <div class="phase-detail" id="phase3-detail">
-          <div class="phase-detail-inner">
-            <p>Low-volume specialty manufacturing, custom runs for high-value customers, recurring process-service contracts, and application-specific device production in space, defense, and RF verticals.</p>
-          </div>
-        </div>
-      </div>
-      <div class="phase-card clickable" id="phase4-card">
-        <div class="phase-dot"></div>
-        <span class="phase-label pl">Phase 4</span>
-        <h3 class="pt">Proprietary Products</h3>
-        <p class="pp">Selective launch of proprietary device lines.</p>
-        <div class="phase-milestone pm"><span class="milestone-dot"></span> Platform Company</div>
-        <span class="phase-expand-hint">Click to expand</span>
-        <div class="phase-detail" id="phase4-detail">
-          <div class="phase-detail-inner">
-            <p>Selective launch of proprietary device lines in target verticals where Titanym's process advantage and customer knowledge create defensible, hard-to-copy product positions with recurring margin.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="scope-section" id="phase1">
-  <div class="container">
-    <div class="eyebrow reveal">Phase 1. Current Stage</div>
-    <h2 class="section-title reveal">Qualification first.<br>Device development later.</h2>
-    <div class="rule reveal"></div>
-    <div class="scope-cols">
-      <div>
-        <p class="section-intro" style="margin-bottom:2rem;">Phase 1 is strictly scoped. The objective is to determine whether the SiGe-on-sapphire process can produce repeatable, high-quality semiconductor material. No device claims are made until this gate is cleared.</p>
-        <div class="scope-list">
-          <div class="scope-item reveal">
-            <span class="scope-num">01</span>
-            <div><h4>Process Reproduction</h4><p>Reproducing low-temperature SiGe growth at 450 to 500°C from reported process parameters in a controlled nanofabrication environment.</p></div>
-          </div>
-          <div class="scope-item reveal">
-            <span class="scope-num">02</span>
-            <div><h4>Crystal Quality Measurement</h4><p>Single crystal confirmation, SiGe orientation alignment, and X-ray diffraction analysis of structural integrity.</p></div>
-          </div>
-          <div class="scope-item reveal">
-            <span class="scope-num">03</span>
-            <div><h4>Defect Mapping</h4><p>Detection and mapping of crystal twin defects, dislocations, and contamination across the full wafer surface.</p></div>
-          </div>
-          <div class="scope-item reveal">
-            <span class="scope-num">04</span>
-            <div><h4>Wafer Stress and Surface Analysis</h4><p>Curvature analysis, AFM and microscopy evaluation of surface roughness, defect counts, and thermal load performance.</p></div>
-          </div>
-          <div class="scope-item reveal">
-            <span class="scope-num">05</span>
-            <div><h4>Repeatability Testing</h4><p>Statistical analysis across multiple growth runs with clear pass/fail criteria for each measurement category.</p></div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="phase1-output reveal">
-          <div class="phase1-output-title">Phase 1 Output</div>
-          <div class="phase1-output-headline">Materials Qualification Report</div>
-          <p class="phase1-output-body">A formal qualification report documents all measurement data, process parameters, and material characterization findings. The output is a binary determination on whether the material system is ready for Phase 2 device development.</p>
-          <div class="path-steps">
-            <div class="path-step">
-              <span class="step-num">01</span>
-              <div><h4>Reproduce Growth Conditions</h4><p>Controlled deposition at target low-temperature parameters.</p></div>
-            </div>
-            <div class="path-step">
-              <span class="step-num">02</span>
-              <div><h4>Characterize Crystal Quality</h4><p>XRD, orientation alignment, defect density mapping.</p></div>
-            </div>
-            <div class="path-step">
-              <span class="step-num">03</span>
-              <div><h4>Evaluate Repeatability</h4><p>Multi-run statistical analysis with documented variance.</p></div>
-            </div>
-            <div class="path-step">
-              <span class="step-num">04</span>
-              <div><h4>Issue Qualification Report</h4><p>Full measurement record and formal program determination.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="tech-section" id="technology">
-  <div class="container">
-    <div class="eyebrow reveal">Technology Foundation</div>
-    <h2 class="section-title reveal">The manufacturing stack.</h2>
-    <div class="rule reveal"></div>
-    <p class="section-intro reveal">Titanym's foundation is a set of interlocking manufacturing capabilities, each addressing a specific commercial and technical bottleneck in specialty semiconductor production.</p>
-    <div class="tech-grid">
-      <div class="tech-card reveal">
-        <div class="tech-card-accent"></div>
-        <div class="tech-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3>Low-Temperature SiGe/Sapphire Epitaxy</h3>
-        <p>A fabrication method that reduces SiGe-on-sapphire growth temperature from the conventional range down to 450 to 500°C, eliminating thermal soak requirements and reducing production time from over 4 hours to under 1 hour without sacrificing crystal quality.</p>
-      </div>
-      <div class="tech-card reveal">
-        <div class="tech-card-accent"></div>
-        <div class="tech-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <h3>Single-Crystal SiGe Manufacturing Suite</h3>
-        <p>A broader suite of process methods including Molten Target Sputtering, Thermally Absorptive Coating for faster heating, graded-index layer growth, and methods for thicker, denser, more crack-resistant crystal films.</p>
-      </div>
-      <div class="tech-card reveal">
-        <div class="tech-card-accent"></div>
-        <div class="tech-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9V7H8V3L2 8l6 5V9h14z"/><rect x="2" y="13" width="14" height="2" rx="1"/></svg>
-        </div>
-        <h3>Super-Hetero-Epitaxy and Defect Control</h3>
-        <p>Crystal orientation alignment with the sapphire substrate lattice minimizes misfit dislocation defects. Twin defect volume reduced to well under 1%. X-ray diffraction methods map defect structure across the full wafer.</p>
-      </div>
-      <div class="tech-card reveal">
-        <div class="tech-card-accent"></div>
-        <div class="tech-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
-        <h3>Simplified CMOS Manufacturing</h3>
-        <p>A mask-based deposition process that eliminates photoresist, UV exposure, and selective etching steps. Achieves the same result in 8 steps versus the conventional 19-step process, reducing cost, cycle time, and chemical waste.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="exec-section" id="execution">
-  <div class="container">
-    <div class="eyebrow reveal">Execution</div>
-    <h2 class="section-title reveal">Program Structure</h2>
-    <div class="rule reveal"></div>
-    <p class="section-intro reveal">Titanym operates as a structured program under Umanah Systems Group with defined scope, gate-controlled progression, and institutional manufacturing access.</p>
-    <div class="exec-grid">
-      <div class="exec-card reveal">
-        <div class="exec-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
-        <h3>Program Structure</h3>
-        <p>Titanym operates as a program under Umanah Systems Group. A structured technical program with defined scope, deliverables, and phase gates. Not a science project. A disciplined commercialization pathway.</p>
-      </div>
-      <div class="exec-card reveal">
-        <div class="exec-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9V7H8V3L2 8l6 5V9h14z"/><rect x="2" y="13" width="14" height="2" rx="1"/><rect x="2" y="18" width="10" height="2" rx="1"/></svg>
-        </div>
-        <h3>Nanofabrication Environment</h3>
-        <p>Phase 1 runs within a university nanofabrication facility capable of controlled deposition, materials characterization, and full metrology. Institutional access to equipment and process expertise.</p>
-      </div>
-      <div class="exec-card reveal">
-        <div class="exec-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
-        <h3>Current Focus</h3>
-        <p>Phase 1 is strictly process reproduction and materials evaluation. Device development is not in scope until the materials determination is issued. This discipline is intentional and non-negotiable.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="contact-inner-grid">
-      <div>
-        <div class="eyebrow reveal">Get in Touch</div>
-        <h2 class="contact-big reveal">Let's talk about<br><span class="ca">what's next.</span></h2>
-        <p class="contact-body reveal">Whether you're a potential investor, a government or defense partner, a technical collaborator, or a customer looking for specialized semiconductor process support, we want to hear from you.</p>
-        <p class="contact-body reveal" style="font-size:.9rem;color:rgba(143,163,184,.6);">Titanym. A Umanah Systems Group Program.</p>
-      </div>
-      <form class="contact-form-side reveal" action="https://formspree.io/f/xeelnkqj" method="POST" id="contact-form">
-        <div class="contact-row">
-          <label for="c-name">Name <span style="color:var(--amber)">*</span></label>
-          <input type="text" id="c-name" name="name" class="contact-input" placeholder="Your name" required>
-        </div>
-        <div class="contact-row">
-          <label for="c-org">Organization <span style="color:var(--amber)">*</span></label>
-          <input type="text" id="c-org" name="organization" class="contact-input" placeholder="Company or institution" required>
-        </div>
-        <div class="contact-row">
-          <label for="c-type">I am a...</label>
-          <select id="c-type" name="type" class="contact-input">
-            <option value="">Select...</option>
-            <option>Investor / Family Office</option>
-            <option>Government / Defense Partner</option>
-            <option>Technical Collaborator</option>
-            <option>Potential Customer</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="contact-row">
-          <label for="c-email">Email <span style="color:var(--amber)">*</span></label>
-          <input type="email" id="c-email" name="email" class="contact-input" placeholder="your@email.com" required>
-        </div>
-        <div class="contact-row">
-          <label for="c-msg">Message <span style="color:var(--amber)">*</span></label>
-          <textarea id="c-msg" name="message" class="contact-input" rows="4" placeholder="What would you like to discuss?" style="resize:vertical;" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary" id="contact-submit">Send Message</button>
-        <p class="contact-note" id="form-status"></p>
-        <p class="contact-note">Or email directly: <a href="mailto:contact@titanym.com" style="color:var(--amber);">contact@titanym.com</a></p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <span class="footer-wordmark">TITANYM</span>
-      <span class="footer-sub">A Umanah Systems Group Program</span>
-    </div>
-    <nav class="footer-nav">
-      <a href="#thesis">Thesis</a>
-      <a href="#markets">Markets</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#phase1">Phase 1</a>
-      <a href="#technology">Technology</a>
+      <a href="#applications">Applications</a>
+      <a href="#government">Government &amp; Partnerships</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="footer-copy">
-      <p>&copy; Umanah Systems Group. All rights reserved.</p>
+    <a href="#contact" class="btn btn-solid bar-cta">Get in touch</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Mobile">
+    <a href="#technology">Technology</a>
+    <a href="#applications">Applications</a>
+    <a href="#government">Government &amp; Partnerships</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="chapter c-void hero" id="top" data-chapter="void">
+    <div class="hero-grid">
+      <h1 class="hero-name" aria-label="Titanym">
+        <span class="hero-letters" aria-hidden="true"><span class="ti">Ti</span>tanym</span>
+      </h1>
+      <div class="hero-copy">
+        <p class="hero-line" data-reveal><span class="ink-pale">Where silicon ends.</span><br><span class="ink-amber">Titanym begins.</span></p>
+        <p class="hero-sub" data-reveal>We are developing a two-sided sapphire semiconductor platform that brings III-nitride RF electronics and silicon-germanium compute into one wafer architecture, for defense, space and telecommunications.</p>
+        <div class="hero-actions" data-reveal>
+          <a href="#technology" class="btn btn-solid">Explore the technology</a>
+          <a href="#government" class="btn btn-line">Government &amp; Partnerships</a>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img src="images/hero-wafer.jpg" width="594" height="710" alt="A sapphire wafer on a mountain ridge at dusk, with a radar station and a satellite above the horizon">
+      </figure>
     </div>
+  </section>
+
+  <!-- AWARDABLE BAND -->
+  <section class="band" aria-label="Awardable status" data-chapter="navy">
+    <div class="band-inner">
+      <div class="band-badges">
+        <a href="https://www.tradewindai.com" target="_blank" rel="noopener" class="band-badge" aria-label="CDAO Tradewinds Solutions Marketplace, Awardable (opens tradewindai.com)">
+          <img src="images/badge-tradewinds-awardable.png" width="640" height="640" alt="Awardable badge, Chief Digital and Artificial Intelligence Office Tradewinds Solutions Marketplace">
+        </a>
+        <a href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener" class="band-badge" aria-label="DARPA ERIS Marketplace, Awardable (opens darpaconnect.us)">
+          <img src="images/badge-eris-awardable.png" width="592" height="594" alt="Awardable badge, ERIS Marketplace">
+        </a>
+      </div>
+      <div class="band-text">
+        <p class="band-title">Assessed as Awardable in two defense innovation marketplaces: DARPA&rsquo;s ERIS Marketplace and the CDAO Tradewinds Solutions Marketplace.</p>
+        <p class="fine">Awardable status does not constitute a government contract, funding commitment, endorsement, or guarantee of an award.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="chapter c-white problem" id="problem" data-chapter="white" aria-labelledby="problem-h">
+    <div class="tiles">
+      <div class="tile tile-slogan" data-reveal>
+        <h2 id="problem-h">Built<br>apart.</h2>
+        <p class="slogan-sub">Then wired together later, through packages, interposers and boards.</p>
+      </div>
+      <div class="tile tile-word" data-reveal>
+        <p class="word" aria-label="Gallium nitride and silicon-germanium">GaN<br>SiGe</p>
+      </div>
+      <figure class="tile tile-photo" data-reveal>
+        <img src="images/radar-chain.jpg" width="552" height="242" loading="lazy" alt="A radar antenna, a conversion module and a processing board connected in a chain by cables">
+      </figure>
+      <div class="tile tile-text">
+        <div class="tile-text-body">
+          <p class="lead" data-reveal>Radar, electronic warfare, satellite links and telecom networks all pair high-frequency RF electronics with ever more digital processing. The two need different materials, fabrication and thermal conditions, so today they are made separately and joined later through packages, interposers and boards.</p>
+          <dl class="costs" data-reveal>
+            <div><dt>Signal paths</dt><dd>Distance and interfaces between the RF front end and the processing electronics.</dd></div>
+            <div><dt>Power and heat</dt><dd>Very different electrical and thermal demands inside one system.</dd></div>
+            <div><dt>Size and complexity</dt><dd>More packaging, routing and integration hardware.</dd></div>
+            <div><dt>Manufacturing</dt><dd>Separate fabrication and qualification flows to coordinate.</dd></div>
+          </dl>
+          <p class="closer" data-reveal>Better system integration starts with a better semiconductor architecture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section class="chapter c-steel tech" id="technology" data-chapter="steel" aria-labelledby="tech-h">
+    <div class="tech-split">
+      <figure class="cutaway" id="cutaway" data-layer="all">
+        <svg viewBox="0 0 600 640" role="img" aria-labelledby="cut-title cut-desc">
+          <title id="cut-title">Conceptual cutaway of the Titanym wafer</title>
+          <desc id="cut-desc">Three layers pulled apart: a III-nitride RF device layer on top, a sapphire substrate in the middle, and a silicon-germanium electronics layer on the bottom.</desc>
+          <defs>
+            <pattern id="grid-gold" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="scale(1 0.42) rotate(45)">
+              <rect width="26" height="26" fill="#E8A030"/>
+              <rect x="2" y="2" width="22" height="22" fill="#F0C060"/>
+            </pattern>
+            <pattern id="grid-sige" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="scale(1 0.42) rotate(45)">
+              <rect width="22" height="22" fill="#6E8FAE"/>
+              <rect x="2" y="2" width="18" height="18" fill="#C8D4E0"/>
+            </pattern>
+          </defs>
+          <g class="layer layer-sige" data-layer="sige">
+            <path class="side" d="M70 380 A230 96 0 0 0 530 380 L530 406 A230 96 0 0 1 70 406 Z" fill="#45627F"/>
+            <ellipse cx="300" cy="380" rx="230" ry="96" fill="url(#grid-sige)"/>
+          </g>
+          <g class="layer layer-sapphire" data-layer="sapphire">
+            <path class="side" d="M70 320 A230 96 0 0 0 530 320 L530 352 A230 96 0 0 1 70 352 Z" fill="#2A5298"/>
+            <ellipse cx="300" cy="320" rx="230" ry="96" fill="#5B86C9"/>
+            <ellipse cx="300" cy="320" rx="168" ry="70" fill="#7FA3DA"/>
+            <ellipse cx="300" cy="320" rx="96" ry="40" fill="#A9C4EC"/>
+          </g>
+          <g class="layer layer-rf" data-layer="rf">
+            <path class="side" d="M70 260 A230 96 0 0 0 530 260 L530 284 A230 96 0 0 1 70 284 Z" fill="#A86A12"/>
+            <ellipse cx="300" cy="260" rx="230" ry="96" fill="url(#grid-gold)"/>
+          </g>
+        </svg>
+      </figure>
+
+      <div class="tech-panel">
+        <h2 id="tech-h" data-reveal>Two sides. One sapphire wafer.</h2>
+        <p class="tech-intro" data-reveal>Titanym places III-nitride RF structures and SiGe electronics on opposite faces of a single sapphire substrate, bringing complementary semiconductor functions into one common foundation. The cutaway is conceptual; the architecture is under development.</p>
+        <div class="tabs" role="tablist" aria-label="Wafer layers" data-reveal>
+          <button role="tab" id="tab-int" aria-controls="panel-int" aria-selected="true" data-layer="all">Whole wafer</button>
+          <button role="tab" id="tab-rf" aria-controls="panel-rf" aria-selected="false" tabindex="-1" data-layer="rf">III-nitride RF</button>
+          <button role="tab" id="tab-sapphire" aria-controls="panel-sapphire" aria-selected="false" tabindex="-1" data-layer="sapphire">Sapphire</button>
+          <button role="tab" id="tab-sige" aria-controls="panel-sige" aria-selected="false" tabindex="-1" data-layer="sige">SiGe electronics</button>
+        </div>
+        <div class="panels">
+          <div role="tabpanel" id="panel-int" aria-labelledby="tab-int">
+            <h3>Three layers, one platform</h3>
+            <p>RF on top, sapphire at the core, electronics below. Between the faces sit inter-side signaling, isolation, thermal paths and RF and compute coexistence, designed and validated together. Pick a layer to explore it.</p>
+          </div>
+          <div role="tabpanel" id="panel-rf" aria-labelledby="tab-rf" hidden>
+            <h3>The top face: power at frequency</h3>
+            <p>Gallium-nitride-family devices for high-power, high-frequency work: the RF front ends of radar, electronic warfare and communications systems. Sapphire is already an established substrate for III-nitride growth.</p>
+          </div>
+          <div role="tabpanel" id="panel-sapphire" aria-labelledby="tab-sapphire" hidden>
+            <h3>The core: one crystal, two jobs</h3>
+            <p>Single-crystal sapphire is an electrical insulator by nature. It gives both device layers a common physical foundation while keeping them electrically separate.</p>
+          </div>
+          <div role="tabpanel" id="panel-sige" aria-labelledby="tab-sige" hidden>
+            <h3>The bottom face: processing</h3>
+            <p>Single-crystal silicon-germanium for high-performance electronic and processing functions, grown on the opposite face of the same wafer.</p>
+          </div>
+        </div>
+        <div class="cells" data-reveal>
+          <a href="#applications" class="cell cell-ink">See where it applies</a>
+          <a href="#contact" class="cell cell-tone">Discuss the platform</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY TITANYM -->
+  <section class="chapter c-amber why" id="why" data-chapter="amber" aria-labelledby="why-h">
+    <div class="why-head">
+      <h2 id="why-h" data-reveal>Integration at the wafer.</h2>
+      <p class="why-intro" data-reveal>Heterogeneous systems usually meet at the package. Titanym moves the meeting point down to the wafer itself.</p>
+    </div>
+    <div class="rows">
+      <article class="row" data-reveal>
+        <div class="row-text">
+          <h3>RF and compute, closer</h3>
+          <p>Front end and processor normally sit on separate dies, packages and often boards. A shared wafer lets suitable designs place selected processing right behind the RF electronics.</p>
+        </div>
+        <img class="row-img w-a" src="images/radar-edge.jpg" width="385" height="251" loading="lazy" alt="A radar dish on a ridge scanning the sky, with a processor icon beside it">
+      </article>
+      <article class="row" data-reveal>
+        <div class="row-text">
+          <h3>Isolation in the material</h3>
+          <p>Sapphire insulates the two device layers by nature, rather than by added packaging, and it is a substrate the III-nitride industry already knows well.</p>
+        </div>
+        <img class="row-img w-b" src="images/chip-stack.jpg" width="259" height="251" loading="lazy" alt="Layers of a chip separated in an exploded view">
+      </article>
+      <article class="row" data-reveal>
+        <div class="row-text">
+          <h3>Interfaces by design</h3>
+          <p>The signal, power and control paths between the two faces are designed and validated as part of the architecture, not bolted on afterwards.</p>
+        </div>
+        <img class="row-img w-c" src="images/chip-shield.jpg" width="242" height="251" loading="lazy" alt="A chip marked Ti inside a shield outline">
+      </article>
+      <article class="row" data-reveal>
+        <div class="row-text">
+          <h3>Heat and reliability first</h3>
+          <p>Power RF runs hot and precision electronics do not like heat. Thermal flow and long-term reliability are treated as primary design constraints from the start.</p>
+        </div>
+        <img class="row-img w-b" src="images/wafer-horizon.jpg" width="585" height="360" loading="lazy" alt="A patterned wafer lit gold against the curve of the Earth">
+      </article>
+      <article class="row" data-reveal>
+        <div class="row-text">
+          <h3>A proven materials base</h3>
+          <p>Single-crystal silicon-germanium has been grown directly on sapphire at 450&ndash;500&nbsp;&deg;C in published research and characterized by X-ray diffraction, AFM and TEM. Titanym builds from that foundation; the integrated RF and compute platform is under development.</p>
+        </div>
+        <img class="row-img w-c" src="images/wafer-macro.jpg" width="221" height="251" loading="lazy" alt="A silicon-germanium on sapphire wafer under blue light">
+      </article>
+      <p class="why-close" data-reveal>Not a replacement for every process. A new integration path where conventional approaches force costly tradeoffs.</p>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="chapter c-void apps" id="applications" data-chapter="void" aria-labelledby="apps-h">
+    <h2 id="apps-h" class="apps-h" data-reveal>Built for mission systems.</h2>
+    <ul class="poster">
+      <li class="app" data-reveal>
+        <button class="app-row" aria-expanded="false" aria-controls="app-radar">
+          <span class="app-name">Radar &amp; EW</span><span class="app-tag">Defense first</span>
+        </button>
+        <div class="app-detail" id="app-radar" hidden>
+          <img src="images/radar-dish.jpg" width="393" height="142" loading="lazy" alt="A radar dish at a mountain site at night">
+          <div>
+            <p>Radar and electronic warfare combine demanding RF front ends with signal processing and control. Titanym is targeting ways to bring selected processing closer to the high-frequency electronics through a common-substrate architecture.</p>
+            <p class="areas">Radar front ends &middot; RF sensing &middot; Electronic warfare electronics &middot; Signal-processing subsystems</p>
+          </div>
+        </div>
+      </li>
+      <li class="app" data-reveal>
+        <button class="app-row" aria-expanded="false" aria-controls="app-telecom">
+          <span class="app-name">Telecom</span><span class="app-tag">Commercial &amp; dual-use</span>
+        </button>
+        <div class="app-detail" id="app-telecom" hidden>
+          <img src="images/telecom-tower.jpg" width="393" height="142" loading="lazy" alt="A telecommunications tower above a city at night">
+          <div>
+            <p>Modern networks depend on RF hardware and digital processing working together. Titanym&rsquo;s architecture opens new approaches to high-frequency communications electronics where integration, heat and packaging complexity matter.</p>
+            <p class="areas">Wireless infrastructure &middot; Microwave and high-frequency links &middot; Telecom RF electronics &middot; Communications processing</p>
+          </div>
+        </div>
+      </li>
+      <li class="app" data-reveal>
+        <button class="app-row" aria-expanded="false" aria-controls="app-space">
+          <span class="app-name">Space</span><span class="app-tag">SATCOM &amp; payloads</span>
+        </button>
+        <div class="app-detail" id="app-space" hidden>
+          <img src="images/satellite.jpg" width="392" height="142" loading="lazy" alt="A satellite in orbit above the Earth">
+          <div>
+            <p>Spacecraft and satellite links demand tight control of power, heat, mass and reliability. Titanym is pursuing an integration architecture for future RF and computing payload electronics, subject to each mission&rsquo;s qualification requirements.</p>
+            <p class="areas">SATCOM electronics &middot; Payload signal processing &middot; Spaceborne RF subsystems</p>
+          </div>
+        </div>
+      </li>
+      <li class="app" data-reveal>
+        <button class="app-row" aria-expanded="false" aria-controls="app-rugged">
+          <span class="app-name">Rugged</span><span class="app-tag">Mission-critical</span>
+        </button>
+        <div class="app-detail" id="app-rugged" hidden>
+          <img src="images/rugged-module.jpg" width="381" height="142" loading="lazy" alt="An electronics module on a rocky mountain outcrop">
+          <div>
+            <p>Selected aerospace, industrial and high-reliability systems may gain from closer integration of RF and electronic functions. We evaluate these by customer requirements and demonstrated device capability.</p>
+            <p class="areas">Harsh-environment sensing &middot; Specialized electronic modules &middot; High-reliability systems</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <figure class="apps-media" data-reveal>
+      <img src="images/jet.jpg" width="803" height="310" loading="lazy" alt="A fighter aircraft above the clouds at sunset">
+    </figure>
+  </section>
+
+  <!-- GOVERNMENT -->
+  <section class="chapter c-plat gov" id="government" data-chapter="plat" aria-labelledby="gov-h">
+    <div class="board">
+      <div class="t t-accent t-wide" data-reveal>
+        <h2 id="gov-h">Awardable. Twice.</h2>
+        <p>Titanym&rsquo;s submitted solutions were assessed as Awardable in two separate defense innovation marketplaces, giving authorized government customers a route to review them and open acquisition discussions.</p>
+      </div>
+      <a class="t t-badge" href="https://www.tradewindai.com" target="_blank" rel="noopener" data-reveal>
+        <img src="images/badge-tradewinds-awardable.png" width="640" height="640" loading="lazy" alt="Awardable badge, CDAO Tradewinds Solutions Marketplace">
+      </a>
+      <a class="t t-badge" href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener" data-reveal>
+        <img src="images/badge-eris-awardable.png" width="592" height="594" loading="lazy" alt="Awardable badge, ERIS Marketplace">
+      </a>
+      <div class="t t-half" data-reveal>
+        <h3>CDAO Tradewinds Solutions Marketplace</h3>
+        <p>Awardable through the Department of Defense Chief Digital and Artificial Intelligence Office&rsquo;s Tradewinds Solutions Marketplace, where authorized government buyers review assessed solutions and consider procurement pathways.</p>
+        <a class="t-link" href="https://www.tradewindai.com" target="_blank" rel="noopener">tradewindai.com</a>
+        <p class="fine">Viewing the submission requires a government login.</p>
+      </div>
+      <div class="t t-half" data-reveal>
+        <h3>DARPA ERIS Marketplace</h3>
+        <p>Awardable in the Defense Advanced Research Projects Agency&rsquo;s Expedited Research Innovation System (ERIS) Marketplace after a competitive technical assessment of the submitted solution.</p>
+        <a class="t-link" href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener">darpaconnect.us/eris</a>
+        <p class="fine">Viewing marketplace materials requires an authorized government account.</p>
+      </div>
+      <div class="t t-full" data-reveal>
+        <h3>Who we work with</h3>
+        <ul class="partners">
+          <li>Government program offices</li>
+          <li>Defense primes and system integrators</li>
+          <li>Semiconductor manufacturing partners</li>
+          <li>Technical collaborators</li>
+          <li>Strategic commercial partners</li>
+        </ul>
+        <a href="#contact" class="btn btn-solid">Discuss a partnership</a>
+      </div>
+    </div>
+    <p class="fine gov-fine">Assessment as Awardable does not constitute a government contract, funding commitment, endorsement, sole-source authorization, or guarantee of an award. The two marketplaces assessed Titanym separately; neither is a joint certification.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="chapter c-horizon contact" id="contact" data-chapter="horizon" aria-labelledby="contact-h">
+    <div class="strip" aria-hidden="true">
+      <div class="strip-track">
+        <img src="images/radar-dish.jpg" alt="" width="393" height="142"><img src="images/gan-die.jpg" alt="" width="251" height="251"><img src="images/satellite.jpg" alt="" width="392" height="142"><img src="images/wafer-stack.jpg" alt="" width="635" height="452"><img src="images/telecom-tower.jpg" alt="" width="393" height="142"><img src="images/sige-die.jpg" alt="" width="250" height="243"><img src="images/rugged-module.jpg" alt="" width="381" height="142"><img src="images/radar-chain.jpg" alt="" width="552" height="242"><img src="images/radar-dish.jpg" alt="" width="393" height="142"><img src="images/gan-die.jpg" alt="" width="251" height="251"><img src="images/satellite.jpg" alt="" width="392" height="142"><img src="images/wafer-stack.jpg" alt="" width="635" height="452"><img src="images/telecom-tower.jpg" alt="" width="393" height="142"><img src="images/sige-die.jpg" alt="" width="250" height="243"><img src="images/rugged-module.jpg" alt="" width="381" height="142"><img src="images/radar-chain.jpg" alt="" width="552" height="242">
+      </div>
+    </div>
+    <div class="contact-body">
+      <h2 id="contact-h" data-reveal>Let&rsquo;s talk about what&rsquo;s next.</h2>
+      <p class="contact-intro" data-reveal>We welcome conversations with government customers, defense and communications companies, semiconductor manufacturers and technical partners exploring advanced RF and compute integration.</p>
+      <form class="form" action="https://formspree.io/f/xeelnkqj" method="POST" id="contact-form" data-reveal>
+        <label class="field">
+          <span>Name</span>
+          <input type="text" id="c-name" name="name" autocomplete="name" required>
+        </label>
+        <label class="field">
+          <span>Organization</span>
+          <input type="text" id="c-org" name="organization" autocomplete="organization" required>
+        </label>
+        <label class="field">
+          <span>Area of interest</span>
+          <select id="c-type" name="type">
+            <option value="">Select one</option>
+            <option>Government / Defense</option>
+            <option>Telecommunications</option>
+            <option>Space / SATCOM</option>
+            <option>Semiconductor Manufacturing</option>
+            <option>Technical Collaboration</option>
+            <option>Strategic Partnership</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Work email</span>
+          <input type="email" id="c-email" name="email" autocomplete="email" required>
+        </label>
+        <label class="field field-msg">
+          <span>Message</span>
+          <textarea id="c-msg" name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="submit" id="contact-submit">Send message</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="chapter c-amber foot" data-chapter="amber">
+  <div class="foot-top">
+    <p class="wordmark"><span class="ti">Ti</span>tanym</p>
+    <p>Where silicon ends. Titanym begins.</p>
+    <p>Defense &middot; Space &middot; Telecommunications</p>
+    <a href="#top" class="foot-up">Back to top</a>
+  </div>
+  <a class="foot-mail" href="mailto:contact@titanym.com">contact<br class="mail-break">@titanym.com</a>
+  <div class="foot-meta">
+    <nav aria-label="Footer">
+      <a href="#technology">Technology</a>
+      <a href="#applications">Applications</a>
+      <a href="#government">Government</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p>Integrate. Harden. Outperform.</p>
+    <p>&copy; 2026 Titanym Inc. All rights reserved.</p>
   </div>
 </footer>
 
-<script>
-(function(){
-'use strict';
-
-/* Sticky header */
-var header=document.getElementById('site-header');
-function updateHeader(){header.classList.toggle('scrolled',window.scrollY>40)}
-window.addEventListener('scroll',updateHeader,{passive:true});
-updateHeader();
-
-/* Hamburger */
-var hamburger=document.getElementById('nav-hamburger');
-var navLinks=document.getElementById('nav-links');
-if(hamburger&&navLinks){
-  hamburger.addEventListener('click',function(){
-    var isOpen=navLinks.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded',isOpen);
-    var s=hamburger.querySelectorAll('span');
-    if(isOpen){s[0].style.transform='translateY(7px) rotate(45deg)';s[1].style.opacity='0';s[2].style.transform='translateY(-7px) rotate(-45deg)'}
-    else{s[0].style.transform=s[1].style.opacity=s[2].style.transform=''}
-  });
-  navLinks.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded','false');
-      var s=hamburger.querySelectorAll('span');
-      s[0].style.transform=s[1].style.opacity=s[2].style.transform='';
-    });
-  });
-}
-
-/* Reveal on scroll */
-var revealEls=document.querySelectorAll('.reveal');
-var revObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target)}});
-},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
-revealEls.forEach(function(el){revObs.observe(el)});
-
-/* Stagger */
-function stagger(pSel,cSel,d){
-  document.querySelectorAll(pSel).forEach(function(p){
-    p.querySelectorAll(cSel).forEach(function(c,i){c.style.transitionDelay=(i*(d||70))+'ms'});
-  });
-}
-stagger('.markets-grid','.market-card',80);
-stagger('.roadmap-track','.phase-card',100);
-stagger('.advantage-list','.advantage-item',90);
-stagger('.tech-grid','.tech-card',90);
-stagger('.exec-grid','.exec-card',90);
-stagger('.scope-list','.scope-item',80);
-stagger('.path-steps','.path-step',60);
-
-/* Interactive phase cards */
-['phase2-card','phase3-card','phase4-card'].forEach(function(id){
-  var card=document.getElementById(id);
-  if(!card)return;
-  var detail=card.querySelector('.phase-detail');
-  var hint=card.querySelector('.phase-expand-hint');
-  card.addEventListener('click',function(){
-    var isOpen=detail.classList.toggle('open');
-    card.classList.toggle('expanded',isOpen);
-    if(hint){hint.textContent=isOpen?'Click to collapse':'Click to expand'}
-  });
-});
-
-/* Scroll-spy */
-var sections=document.querySelectorAll('section[id]');
-var navAs=document.querySelectorAll('.nav-links a[href^="#"]');
-var spyObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      var id=e.target.id;
-      navAs.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id)});
-    }
-  });
-},{rootMargin:'-30% 0px -60% 0px'});
-sections.forEach(function(s){spyObs.observe(s)});
-
-/* Smooth scroll */
-document.querySelectorAll('a[href^="#"]').forEach(function(a){
-  a.addEventListener('click',function(e){
-    var id=this.getAttribute('href').slice(1);
-    var tgt=document.getElementById(id);
-    if(tgt){e.preventDefault();window.scrollTo({top:tgt.getBoundingClientRect().top+window.scrollY-72,behavior:'smooth'})}
-  });
-});
-
-/* Hero grid parallax */
-var grid=document.querySelector('.hero-grid');
-if(grid){window.addEventListener('scroll',function(){grid.style.transform='translateY('+(window.scrollY*.12)+'px)';},{passive:true})}
-
-})();
-
-var form=document.getElementById('contact-form');
-var submitBtn=document.getElementById('contact-submit');
-var statusEl=document.getElementById('form-status');
-if(form){
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    submitBtn.textContent='Sending...';
-    submitBtn.style.opacity='.7';
-    submitBtn.disabled=true;
-    fetch('https://formspree.io/f/xeelnkqj',{
-      method:'POST',
-      body:new FormData(form),
-      headers:{Accept:'application/json'}
-    }).then(function(r){
-      if(r.ok){
-        statusEl.textContent='Message sent. We will be in touch.';
-        statusEl.style.color='var(--amber)';
-        form.reset();
-      } else {
-        statusEl.textContent='Something went wrong. Please email contact@titanym.com directly.';
-        statusEl.style.color='rgba(200,212,224,.6)';
-      }
-      submitBtn.textContent='Send Message';
-      submitBtn.style.opacity='1';
-      submitBtn.disabled=false;
-    }).catch(function(){
-      statusEl.textContent='Something went wrong. Please email contact@titanym.com directly.';
-      statusEl.style.color='rgba(200,212,224,.6)';
-      submitBtn.textContent='Send Message';
-      submitBtn.style.opacity='1';
-      submitBtn.disabled=false;
-    });
-  });
-}
-</script>
-</div><!-- /page-box -->
+<script src="js/site.js" defer></script>
 </body>
 </html>
