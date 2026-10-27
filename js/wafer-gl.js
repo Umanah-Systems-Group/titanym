@@ -131,7 +131,7 @@ class WaferView {
     this.camera.aspect = w / h;
     // Fit the wafer (radius 1) plus the exploded stack in view, from a raised angle.
     const fitH = this.mode === 'hero' ? 2.35 : 3.25;
-    const fitW = this.mode === 'hero' ? 2.3 : (w > 520 ? 3.4 : 2.8);
+    const fitW = this.mode === 'hero' ? 2.3 : (w > 520 ? 3.7 : 3.9);
     const fov = THREE.MathUtils.degToRad(this.camera.fov);
     const distH = fitH / 2 / Math.tan(fov / 2);
     const distW = fitW / 2 / Math.tan(fov / 2) / this.camera.aspect;
@@ -140,7 +140,7 @@ class WaferView {
     this.camera.position.set(0, Math.sin(elev) * dist, Math.cos(elev) * dist);
     this.camera.lookAt(0, 0, 0);
     // In the wide cutaway, sit the wafer left of centre so the layer labels fit on the right.
-    if (this.mode === 'cut' && w > 520) this.camera.setViewOffset(w, h, w * 0.1, 0, w, h);
+    if (this.mode === 'cut') this.camera.setViewOffset(w, h, w * (w > 520 ? 0.07 : 0.16), 0, w, h);
     else this.camera.clearViewOffset();
     this.camera.updateProjectionMatrix();
   }
@@ -198,14 +198,33 @@ class WaferView {
     this.renderer.render(this.scene, this.camera);
   }
 
-  // Screen position (relative to the view) of a layer's right-hand edge, for the cutaway labels.
+  // Right-most screen point of a layer (main piece and its sliding wedge), relative to the view,
+  // so the cutaway labels can sit clear of the model whichever way it is turned.
   edge(name) {
     const node = this.nodes[name];
-    const p = new THREE.Vector3();
-    node.getWorldPosition(p);
-    const right = new THREE.Vector3(1, 0, 0).applyQuaternion(this.camera.quaternion).multiplyScalar(1.0);
-    p.add(right).project(this.camera);
-    return { x: (p.x + 1) / 2 * this.el.clientWidth, y: (1 - p.y) / 2 * this.el.clientHeight };
+    const wedge = this.wedges.find((w) => w.name === `${name}_wedge`);
+    const w = this.el.clientWidth, h = this.el.clientHeight;
+    const v = new THREE.Vector3();
+    let best = null;
+    const test = (obj, deg) => {
+      const a = THREE.MathUtils.degToRad(deg);
+      for (const yy of [-0.03, 0.03]) {
+        v.set(Math.cos(a), yy, -Math.sin(a));
+        obj.localToWorld(v).project(this.camera);
+        const x = (v.x + 1) / 2 * w, y = (1 - v.y) / 2 * h;
+        if (!best || x > best.x) best = { x, y };
+      }
+    };
+    for (let d = -45; d <= 225; d += 5) test(node, d);
+    if (wedge) for (let d = -135; d <= -45; d += 5) test(wedge, d);
+    return best;
+  }
+
+  // Screen position of the stack's centre, relative to the view.
+  centre() {
+    const v = new THREE.Vector3();
+    this.nodes.Sapphire.getWorldPosition(v).project(this.camera);
+    return { x: (v.x + 1) / 2 * this.el.clientWidth, y: (1 - v.y) / 2 * this.el.clientHeight };
   }
 }
 
@@ -242,6 +261,8 @@ async function start() {
   const tech = document.getElementById('technology');
   const cutWafer = document.getElementById('cut-wafer');
   const tags = cut ? cut.el.parentElement.querySelectorAll('.w-tag') : [];
+  const rings = document.querySelector('.tech-rings');
+  const pin = document.querySelector('.tech-pin');
 
   let last = performance.now();
   const loop = (now) => {
@@ -261,16 +282,27 @@ async function start() {
       const show = cut.explode > 0.08;
       const vr = cut.el.parentElement.getBoundingClientRect();
       const er = cut.el.getBoundingClientRect();
-      tags.forEach((tag) => {
-        const name = LAYERS[tag.dataset.for];
-        const pt = cut.edge(name);
-        let x = pt.x + er.left - vr.left + 14;
-        const y = pt.y + er.top - vr.top - 8;
-        x = Math.min(x, vr.width - tag.offsetWidth);
-        tag.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`;
+      const ox = er.left - vr.left, oy = er.top - vr.top;
+      // Labels share one column to the right of the model; leader lines reach back to each layer.
+      const pts = Array.from(tags, (tag) => cut.edge(LAYERS[tag.dataset.for]));
+      const widest = Math.max(...Array.from(tags, (tag) => tag.querySelector('b') ? tag.querySelector('b').offsetWidth : 120));
+      const narrow = vr.width < 600;
+      const col = Math.min(Math.max(...pts.map((p) => p.x)) + ox + (narrow ? 22 : 56), vr.width - widest - (narrow ? 2 : 8));
+      const ys = pts.map((p) => p.y + oy);
+      const order = ys.map((y, i) => i).sort((a, b) => ys[a] - ys[b]);
+      for (let k = 1; k < order.length; k++) ys[order[k]] = Math.max(ys[order[k]], ys[order[k - 1]] + (narrow ? 24 : 30));
+      tags.forEach((tag, i) => {
+        const x = pts[i].x + ox + 8;
+        tag.style.setProperty('--lead', Math.max(narrow ? 10 : 24, col - x - (narrow ? 8 : 12)).toFixed(1) + 'px');
+        tag.style.transform = `translate(${x.toFixed(1)}px,${(ys[i] - 8).toFixed(1)}px)`;
         tag.style.opacity = show ? '' : '0';
         tag.classList.toggle('is-dim', cut.layer !== 'all' && cut.layer !== 'int' && cut.layer !== tag.dataset.for);
       });
+      if (rings) {
+        const c = cut.centre();
+        rings.style.left = (er.left + c.x).toFixed(1) + 'px';
+        rings.style.top = (er.top - pin.getBoundingClientRect().top + c.y).toFixed(1) + 'px';
+      }
     }
     requestAnimationFrame(loop);
   };

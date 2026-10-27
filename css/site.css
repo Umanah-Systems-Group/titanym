@@ -256,7 +256,8 @@ h3 { font-size: 1.25rem; line-height: 1.25; letter-spacing: -.01em; font-weight:
 .step-dots i.is-on { background: var(--amber); width: 48px; }
 .tech-visual { position: relative; display: grid; place-items: center start; }
 .w-tag { position: absolute; z-index: 2; left: 0; top: 0; font: 600 12px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--white); white-space: nowrap; display: flex; align-items: center; gap: 10px; transition: opacity .4s; }
-.w-tag::before { content: ""; width: 36px; height: 1px; background: currentColor; opacity: .6; }
+.w-tag::before { content: ""; width: var(--lead, 36px); height: 1px; background: linear-gradient(90deg, currentColor 0 6px, transparent 6px 10px, currentColor 10px); opacity: .7; border-radius: 1px; }
+.w-tag b { font-weight: 600; padding: 5px 10px; border-radius: 6px; background: rgba(8, 14, 24, .7); border: 1px solid rgba(42, 82, 152, .6); }
 .w-tag[data-for="rf"] { color: var(--gold); }
 .w-tag[data-for="sapphire"] { color: var(--sapph); }
 .w-tag.is-dim { opacity: .3; }
@@ -413,7 +414,7 @@ h3 { font-size: 1.25rem; line-height: 1.25; letter-spacing: -.01em; font-weight:
 .js [data-reveal] { opacity: 0; transform: translateY(32px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--delay, 0s); }
 .js [data-rise] { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--delay, 0s); }
 .js [data-reveal].is-in, .js [data-rise].is-in { opacity: 1; transform: none; }
-.split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+.split .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 .08em .1em; margin: 0 -.08em -.1em; }
 .split .w > span { display: inline-block; transform: translateY(110%); transition: transform 1s var(--ease); transition-delay: calc(var(--i) * 55ms); }
 .split.is-in .w > span { transform: none; }
 
@@ -439,9 +440,7 @@ h3 { font-size: 1.25rem; line-height: 1.25; letter-spacing: -.01em; font-weight:
   .wafer3d.big { --d: min(58vw, 30svh, 360px); }
   .gl-view { width: min(92vw, 460px); }
   .gl-view.big { height: 38svh; }
-  .gl-on > .w-tag { display: none; }
   .tech-pin { padding-top: 64px; }
-  .w-tag { display: none; }
   .steps { margin-top: 20px; }
   .tech-h { font-size: clamp(1.9rem, 7vw, 3rem); }
   .tech .eyebrow { margin-bottom: 12px; }
@@ -489,10 +488,6 @@ h1, h2, .sec-lead, .why-close { text-wrap: balance; }
 .li-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; color: var(--mist); font: 600 15px var(--display); text-decoration: none; }
 .li-link:hover { color: var(--amber); }
 
-.award-chip { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; padding: 8px 16px 8px 12px; border-radius: 999px; border: 1px solid rgba(232, 160, 32, .55); background: rgba(232, 160, 32, .1); color: var(--white); font: 600 13px var(--display); letter-spacing: .02em; text-decoration: none; transition: background-color .3s; }
-.award-chip:hover { background: rgba(232, 160, 32, .2); }
-.award-chip-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 0 rgba(232, 160, 32, .7); animation: chip-pulse 2s infinite; }
-@keyframes chip-pulse { 70% { box-shadow: 0 0 0 10px rgba(232, 160, 32, 0); } 100% { box-shadow: 0 0 0 0 rgba(232, 160, 32, 0); } }
 
 .awardable { position: relative; background: linear-gradient(180deg, #F3F6F9 0%, #E3EAF1 100%); color: #33475E; border: 0; padding: clamp(72px, 10vw, 128px) 0; overflow: clip; }
 .awardable::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(232, 160, 32, .16), transparent 70%); pointer-events: none; }
@@ -563,15 +558,13 @@ h1, h2, .sec-lead, .why-close { text-wrap: balance; }
 }
 @media (max-width: 600px) {
   .award-inner { flex-direction: column; align-items: center; }
-  .award-chip { font-size: 12px; }
-  .award-eyebrow { font-size: 11px; letter-spacing: .1em; }
+    .award-eyebrow { font-size: 11px; letter-spacing: .1em; }
   .award-eyebrow::before, .award-eyebrow::after { display: none; }
   .award-badges { gap: 20px; }
   .awardable .badge-tile { width: 132px; height: 132px; border-radius: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .tr, .tech-cue-mouse i, .award-chip-dot { animation: none; }
-}
+  .tr, .tech-cue-mouse i, }
 
 /* Problem: rendered animation with labels kept clear of the objects */
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -608,4 +601,54 @@ h1, h2, .sec-lead, .why-close { text-wrap: balance; }
   .c-tag { font-size: 8.5px; letter-spacing: .08em; }
   .c-tag b { padding: 3px 6px; }
   .c-tag.hide-s { display: none; }
+}
+
+/* Centered compare controls; mobile tweaks */
+.compare-switch { display: flex; width: max-content; margin-inline: auto; }
+.compare-cap { text-align: center; }
+@media (max-width: 600px) {
+  .c-tag.c-int { top: 55%; transform: translate(-50%, -100%); flex-direction: column-reverse; }
+  .c-tag.c-int::after { top: auto; bottom: -3px; }
+  .c-tag.up i, .c-tag.down i { height: 18px; }
+  .c-tag.c-int i { height: 15vw; }
+  .costs li { text-align: center; }
+  .costs { border-top: 0; }
+}
+
+.t-short { display: none; }
+@media (max-width: 900px) {
+  .t-full { display: none; }
+  .t-short { display: inline; }
+  .w-tag { font-size: 10px; letter-spacing: .1em; gap: 6px; }
+  .w-tag b { padding: 4px 7px; }
+  .cut-wafer-fallback .w-tag, .tech-visual:not(.gl-on) .w-tag { display: none; }
+  .tech-copy { text-align: center; }
+  .tech .eyebrow { justify-content: center; }
+  .tech .eyebrow::after { content: ""; width: 28px; height: 1px; background: currentColor; flex: none; }
+  .step p { margin-inline: auto; }
+  .step-dots { justify-content: center; }
+}
+
+/* Mobile pass: centered headings and section intros, tighter rhythm */
+@media (max-width: 700px) {
+  .sec-head, .hero-copy, .contact-copy { text-align: center; margin-inline: auto; }
+  .sec-head .eyebrow, .hero-copy .eyebrow, .contact-copy .eyebrow { justify-content: center; }
+  .sec-head .eyebrow::after, .hero-copy .eyebrow::after, .contact-copy .eyebrow::after { content: ""; width: 28px; height: 1px; background: currentColor; flex: none; }
+  .sec-lead, .hero-sub { margin-inline: auto; }
+  .hero-copy .eyebrow { font-size: 11.5px; letter-spacing: .12em; }
+  .hero-actions { justify-content: center; }
+  .why-card, .app-body, .gov-card > div { text-align: center; }
+  .why-card .card-v { margin-inline: auto; }
+  .gov-badge { margin-inline: auto; }
+  .gov-card { justify-items: center; }
+  .why-close { text-align: center; }
+  .partners-row { text-align: center; }
+  .partners { justify-content: center; }
+  .partners-row .btn { justify-self: center; }
+  .contact-copy .li-link { display: flex; justify-content: center; }
+  .foot-top, .foot-meta { flex-direction: column; align-items: center; text-align: center; }
+  .foot-top nav { justify-content: center; }
+  .foot-word { text-align: center; }
+  .app h3 { font-size: 1.6rem; }
+  .why-card h3 { font-size: 1.35rem; }
 }
