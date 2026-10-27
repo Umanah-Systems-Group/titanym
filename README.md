@@ -7,11 +7,13 @@ Static marketing site for Titanym Inc., which is developing a two-sided sapphire
 ```
 index.html          the page
 css/site.css        styles (brand tokens at the top)
-js/site.js          header colour by section, entrances, wafer cutaway tabs, applications list, contact form
-images/             deck artwork crops, Awardable badges, favicon, social card
+js/site.js          3D wafer builder, hero signal field, before/after diagram, pinned scroll cutaway, entrances, contact form
+images/             Awardable badges, favicon, social card (rendered from the hero)
 ```
 
 No build step. Vercel serves the repository root as-is.
+
+All illustrations are drawn in code (CSS 3D wafer, inline SVG scenes, canvas field). No pitch-deck artwork is used.
 
 ## Contact form
 

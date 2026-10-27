@@ -14,35 +14,36 @@
   <meta property="og:site_name" content="Titanym">
   <meta property="og:title" content="Titanym | Advanced RF &amp; SiGe Semiconductor Integration">
   <meta property="og:description" content="A two-sided sapphire semiconductor platform integrating III-nitride RF and SiGe electronics for defense, space, and telecommunications.">
-  <meta property="og:image" content="https://titanym.com/images/og-social-share.jpg">
+  <meta property="og:image" content="https://titanym.com/images/og-social-share.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://titanym.com">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Titanym | Advanced RF &amp; SiGe Semiconductor Integration">
   <meta name="twitter:description" content="A two-sided sapphire semiconductor platform integrating III-nitride RF and SiGe electronics for defense, space, and telecommunications.">
-  <meta name="twitter:image" content="https://titanym.com/images/og-social-share.jpg">
+  <meta name="twitter:image" content="https://titanym.com/images/og-social-share.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
 
-<header class="bar" id="bar" data-chapter="void">
+<header class="bar" id="bar">
   <div class="bar-inner">
     <a href="#top" class="wordmark" aria-label="Titanym home"><span class="ti">Ti</span>tanym</a>
     <nav class="bar-nav" aria-label="Main">
       <a href="#technology">Technology</a>
       <a href="#applications">Applications</a>
-      <a href="#government">Government &amp; Partnerships</a>
+      <a href="#government">Government</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="#contact" class="btn btn-solid bar-cta">Get in touch</a>
+    <a href="#contact" class="btn btn-amber bar-cta">Get in touch</a>
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
       <span></span><span></span>
     </button>
@@ -58,270 +59,367 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="chapter c-void hero" id="top" data-chapter="void">
-    <div class="hero-grid">
-      <h1 class="hero-name" aria-label="Titanym">
-        <span class="hero-letters" aria-hidden="true"><span class="ti">Ti</span>tanym</span>
-      </h1>
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <canvas id="field" class="hero-field" aria-hidden="true"></canvas>
+    <div class="hero-inner wrap">
       <div class="hero-copy">
-        <p class="hero-line" data-reveal><span class="ink-pale">Where silicon ends.</span><br><span class="ink-amber">Titanym begins.</span></p>
-        <p class="hero-sub" data-reveal>We are developing a two-sided sapphire semiconductor platform that brings III-nitride RF electronics and silicon-germanium compute into one wafer architecture, for defense, space and telecommunications.</p>
-        <div class="hero-actions" data-reveal>
-          <a href="#technology" class="btn btn-solid">Explore the technology</a>
+        <p class="eyebrow" data-rise>Two-sided sapphire semiconductor platform</p>
+        <h1 class="hero-h" id="hero-h" data-split>Where silicon ends. <span class="amber">Titanym begins.</span></h1>
+        <p class="hero-sub" data-rise>We are developing one wafer architecture that brings III-nitride RF electronics and silicon-germanium compute together on opposite faces of a single sapphire substrate, for defense, space and telecommunications.</p>
+        <div class="hero-actions" data-rise>
+          <a href="#technology" class="btn btn-amber">See the cutaway</a>
           <a href="#government" class="btn btn-line">Government &amp; Partnerships</a>
         </div>
       </div>
-      <figure class="hero-media">
-        <img src="images/hero-wafer.jpg" width="594" height="710" alt="A sapphire wafer on a mountain ridge at dusk, with a radar station and a satellite above the horizon">
-      </figure>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="wafer3d" id="hero-wafer">
+          <div class="w-stage">
+            <div class="w-layer w-sige" data-slices="7"></div>
+            <div class="w-layer w-sapph" data-slices="10"></div>
+            <div class="w-layer w-rf" data-slices="6">
+              <div class="w-rings"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="w-shadow"></div>
+        </div>
+        <ul class="hero-legend">
+          <li><b class="sw sw-rf"></b>III-nitride RF</li>
+          <li><b class="sw sw-sa"></b>Sapphire</li>
+          <li><b class="sw sw-si"></b>SiGe electronics</li>
+        </ul>
+      </div>
     </div>
+    <a href="#awardable" class="scroll-cue" aria-label="Scroll to content"><span></span></a>
   </section>
 
-  <!-- AWARDABLE BAND -->
-  <section class="band" aria-label="Awardable status" data-chapter="navy">
-    <div class="band-inner">
-      <div class="band-badges">
-        <a href="https://www.tradewindai.com" target="_blank" rel="noopener" class="band-badge" aria-label="CDAO Tradewinds Solutions Marketplace, Awardable (opens tradewindai.com)">
+  <!-- AWARDABLE STRIP -->
+  <section class="awardable" id="awardable" aria-label="Awardable status">
+    <div class="wrap award-inner" data-reveal>
+      <div class="award-badges">
+        <a href="https://www.tradewindai.com" target="_blank" rel="noopener" class="badge-tile" aria-label="CDAO Tradewinds Solutions Marketplace, Awardable (opens tradewindai.com)">
           <img src="images/badge-tradewinds-awardable.png" width="640" height="640" alt="Awardable badge, Chief Digital and Artificial Intelligence Office Tradewinds Solutions Marketplace">
         </a>
-        <a href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener" class="band-badge" aria-label="DARPA ERIS Marketplace, Awardable (opens darpaconnect.us)">
+        <a href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener" class="badge-tile" aria-label="DARPA ERIS Marketplace, Awardable (opens darpaconnect.us)">
           <img src="images/badge-eris-awardable.png" width="592" height="594" alt="Awardable badge, ERIS Marketplace">
         </a>
       </div>
-      <div class="band-text">
-        <p class="band-title">Assessed as Awardable in two defense innovation marketplaces: DARPA&rsquo;s ERIS Marketplace and the CDAO Tradewinds Solutions Marketplace.</p>
+      <div class="award-text">
+        <p class="award-title">Assessed as Awardable in two defense innovation marketplaces: DARPA&rsquo;s ERIS Marketplace and the CDAO Tradewinds Solutions Marketplace.</p>
         <p class="fine">Awardable status does not constitute a government contract, funding commitment, endorsement, or guarantee of an award.</p>
       </div>
     </div>
   </section>
 
   <!-- PROBLEM -->
-  <section class="chapter c-white problem" id="problem" data-chapter="white" aria-labelledby="problem-h">
-    <div class="tiles">
-      <div class="tile tile-slogan" data-reveal>
-        <h2 id="problem-h">Built<br>apart.</h2>
-        <p class="slogan-sub">Then wired together later, through packages, interposers and boards.</p>
+  <section class="problem" id="problem" aria-labelledby="problem-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-rise>The problem</p>
+        <h2 id="problem-h" data-split>Built apart. Wired together later.</h2>
+        <p class="sec-lead" data-rise>Radar, electronic warfare, satellite links and telecom networks all pair high-frequency RF electronics with ever more digital processing. The two need different materials, fabrication and thermal conditions, so today they are made separately and joined through packages, interposers and boards.</p>
       </div>
-      <div class="tile tile-word" data-reveal>
-        <p class="word" aria-label="Gallium nitride and silicon-germanium">GaN<br>SiGe</p>
-      </div>
-      <figure class="tile tile-photo" data-reveal>
-        <img src="images/radar-chain.jpg" width="552" height="242" loading="lazy" alt="A radar antenna, a conversion module and a processing board connected in a chain by cables">
-      </figure>
-      <div class="tile tile-text">
-        <div class="tile-text-body">
-          <p class="lead" data-reveal>Radar, electronic warfare, satellite links and telecom networks all pair high-frequency RF electronics with ever more digital processing. The two need different materials, fabrication and thermal conditions, so today they are made separately and joined later through packages, interposers and boards.</p>
-          <dl class="costs" data-reveal>
-            <div><dt>Signal paths</dt><dd>Distance and interfaces between the RF front end and the processing electronics.</dd></div>
-            <div><dt>Power and heat</dt><dd>Very different electrical and thermal demands inside one system.</dd></div>
-            <div><dt>Size and complexity</dt><dd>More packaging, routing and integration hardware.</dd></div>
-            <div><dt>Manufacturing</dt><dd>Separate fabrication and qualification flows to coordinate.</dd></div>
-          </dl>
-          <p class="closer" data-reveal>Better system integration starts with a better semiconductor architecture.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- TECHNOLOGY -->
-  <section class="chapter c-steel tech" id="technology" data-chapter="steel" aria-labelledby="tech-h">
-    <div class="tech-split">
-      <figure class="cutaway" id="cutaway" data-layer="all">
-        <svg viewBox="0 0 600 640" role="img" aria-labelledby="cut-title cut-desc">
-          <title id="cut-title">Conceptual cutaway of the Titanym wafer</title>
-          <desc id="cut-desc">Three layers pulled apart: a III-nitride RF device layer on top, a sapphire substrate in the middle, and a silicon-germanium electronics layer on the bottom.</desc>
+      <figure class="compare" id="compare-fig" data-mode="today" data-reveal>
+        <div class="compare-switch" role="group" aria-label="Compare architectures">
+          <button type="button" data-mode="today" aria-pressed="true">Today</button>
+          <button type="button" data-mode="titanym" aria-pressed="false">With Titanym</button>
+          <span class="switch-thumb" aria-hidden="true"></span>
+        </div>
+        <svg id="compare" viewBox="20 96 760 272" role="img" aria-labelledby="cmp-title cmp-desc">
+          <title id="cmp-title">From separate packages to one wafer</title>
+          <desc id="cmp-desc">Today an RF chip and a compute chip sit in separate packages, joined by long traces through an interposer and a board. With Titanym the two sit on opposite faces of one sapphire wafer, joined by short paths through it.</desc>
           <defs>
-            <pattern id="grid-gold" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="scale(1 0.42) rotate(45)">
-              <rect width="26" height="26" fill="#E8A030"/>
-              <rect x="2" y="2" width="22" height="22" fill="#F0C060"/>
+            <pattern id="die-gold" width="12" height="12" patternUnits="userSpaceOnUse">
+              <rect width="12" height="12" fill="#B87A1C"/><rect x="1" y="1" width="10" height="10" fill="#E8A030"/>
             </pattern>
-            <pattern id="grid-sige" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="scale(1 0.42) rotate(45)">
-              <rect width="22" height="22" fill="#6E8FAE"/>
-              <rect x="2" y="2" width="18" height="18" fill="#C8D4E0"/>
+            <pattern id="die-sige" width="10" height="10" patternUnits="userSpaceOnUse">
+              <rect width="10" height="10" fill="#5D7A98"/><rect x="1" y="1" width="8" height="8" fill="#B4C4D6"/>
             </pattern>
           </defs>
-          <g class="layer layer-sige" data-layer="sige">
-            <path class="side" d="M70 380 A230 96 0 0 0 530 380 L530 406 A230 96 0 0 1 70 406 Z" fill="#45627F"/>
-            <ellipse cx="300" cy="380" rx="230" ry="96" fill="url(#grid-sige)"/>
+          <g class="today-only">
+            <rect x="40" y="318" width="720" height="34" rx="4" class="c-board"/>
+            <text x="400" y="340" class="c-lab" text-anchor="middle">BOARD</text>
+            <rect x="70" y="190" width="220" height="118" rx="8" class="c-pkg"/>
+            <text x="180" y="296" class="c-lab" text-anchor="middle">RF PACKAGE</text>
+            <rect x="510" y="190" width="220" height="118" rx="8" class="c-pkg"/>
+            <text x="620" y="296" class="c-lab" text-anchor="middle">COMPUTE PACKAGE</text>
+            <rect x="335" y="250" width="130" height="58" rx="6" class="c-int"/>
+            <text x="400" y="284" class="c-lab" text-anchor="middle">INTERPOSER</text>
+            <path id="trace-long" class="c-trace" d="M230 236 H300 V330 H335 V279 H465 V330 H500 V236 H570"/>
+            <circle r="5" class="c-packet"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#trace-long"/></animateMotion></circle>
+            <circle r="5" class="c-packet"><animateMotion dur="3.4s" begin="1.13s" repeatCount="indefinite"><mpath href="#trace-long"/></animateMotion></circle>
+            <circle r="5" class="c-packet"><animateMotion dur="3.4s" begin="2.26s" repeatCount="indefinite"><mpath href="#trace-long"/></animateMotion></circle>
           </g>
-          <g class="layer layer-sapphire" data-layer="sapphire">
-            <path class="side" d="M70 320 A230 96 0 0 0 530 320 L530 352 A230 96 0 0 1 70 352 Z" fill="#2A5298"/>
-            <ellipse cx="300" cy="320" rx="230" ry="96" fill="#5B86C9"/>
-            <ellipse cx="300" cy="320" rx="168" ry="70" fill="#7FA3DA"/>
-            <ellipse cx="300" cy="320" rx="96" ry="40" fill="#A9C4EC"/>
+          <g class="ti-only">
+            <rect x="320" y="183" width="160" height="38" rx="3" class="c-sapph"/>
+            <path id="trace-short-a" class="c-trace c-trace-ti" d="M372 176 V230"/>
+            <path id="trace-short-b" class="c-trace c-trace-ti" d="M428 176 V230"/>
+            <circle r="4" class="c-packet"><animateMotion dur="0.9s" repeatCount="indefinite"><mpath href="#trace-short-a"/></animateMotion></circle>
+            <circle r="4" class="c-packet"><animateMotion dur="0.9s" begin="0.45s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#trace-short-b"/></animateMotion></circle>
+            <text x="500" y="207" class="c-lab c-lab-ti">ONE SAPPHIRE WAFER</text>
+            <text x="500" y="160" class="c-lab c-lab-ti">III-NITRIDE RF</text>
+            <text x="500" y="256" class="c-lab c-lab-ti">SiGe ELECTRONICS</text>
           </g>
-          <g class="layer layer-rf" data-layer="rf">
-            <path class="side" d="M70 260 A230 96 0 0 0 530 260 L530 284 A230 96 0 0 1 70 284 Z" fill="#A86A12"/>
-            <ellipse cx="300" cy="260" rx="230" ry="96" fill="url(#grid-gold)"/>
+          <g class="chip chip-rf">
+            <rect x="130" y="206" width="100" height="60" rx="2" fill="url(#die-gold)"/>
+            <text x="180" y="186" class="c-name" text-anchor="middle">GaN RF</text>
+          </g>
+          <g class="chip chip-cmp">
+            <rect x="570" y="206" width="100" height="60" rx="2" fill="url(#die-sige)"/>
+            <text x="620" y="186" class="c-name" text-anchor="middle">SiGe</text>
           </g>
         </svg>
+        <figcaption class="compare-cap">
+          <span class="cap-today">Separate dies, separate packages, long paths in between.</span>
+          <span class="cap-ti">Both faces of one sapphire wafer, joined by short paths through it. Conceptual.</span>
+        </figcaption>
       </figure>
 
-      <div class="tech-panel">
-        <h2 id="tech-h" data-reveal>Two sides. One sapphire wafer.</h2>
-        <p class="tech-intro" data-reveal>Titanym places III-nitride RF structures and SiGe electronics on opposite faces of a single sapphire substrate, bringing complementary semiconductor functions into one common foundation. The cutaway is conceptual; the architecture is under development.</p>
-        <div class="tabs" role="tablist" aria-label="Wafer layers" data-reveal>
-          <button role="tab" id="tab-int" aria-controls="panel-int" aria-selected="true" data-layer="all">Whole wafer</button>
-          <button role="tab" id="tab-rf" aria-controls="panel-rf" aria-selected="false" tabindex="-1" data-layer="rf">III-nitride RF</button>
-          <button role="tab" id="tab-sapphire" aria-controls="panel-sapphire" aria-selected="false" tabindex="-1" data-layer="sapphire">Sapphire</button>
-          <button role="tab" id="tab-sige" aria-controls="panel-sige" aria-selected="false" tabindex="-1" data-layer="sige">SiGe electronics</button>
+      <ul class="costs" id="costs">
+        <li data-reveal><span class="cost-n">01</span><h3>Signal paths</h3><p>Distance and interfaces between the RF front end and the processing electronics.</p></li>
+        <li data-reveal><span class="cost-n">02</span><h3>Power and heat</h3><p>Very different electrical and thermal demands inside one system.</p></li>
+        <li data-reveal><span class="cost-n">03</span><h3>Size and complexity</h3><p>More packaging, routing and integration hardware.</p></li>
+        <li data-reveal><span class="cost-n">04</span><h3>Manufacturing</h3><p>Separate fabrication and qualification flows to coordinate.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY: pinned cutaway -->
+  <section class="tech" id="technology" aria-labelledby="tech-h">
+    <div class="tech-pin">
+      <div class="wrap tech-grid">
+        <div class="tech-copy">
+          <p class="eyebrow">The technology</p>
+          <h2 id="tech-h" class="tech-h">Two sides. <span class="sapph">One sapphire wafer.</span></h2>
+          <ol class="steps" id="steps">
+            <li class="step is-on" data-layer="all">
+              <h3>Three layers, one platform</h3>
+              <p>RF on top, sapphire at the core, electronics below. Keep scrolling to take the wafer apart.</p>
+            </li>
+            <li class="step" data-layer="rf">
+              <h3>The top face: power at frequency</h3>
+              <p>Gallium-nitride-family devices for high-power, high-frequency work: the RF front ends of radar, electronic warfare and communications systems.</p>
+            </li>
+            <li class="step" data-layer="sapphire">
+              <h3>The core: one crystal, two jobs</h3>
+              <p>Single-crystal sapphire is an electrical insulator by nature. It gives both device layers a common foundation while keeping them electrically separate, and it is an established substrate for III-nitride growth.</p>
+            </li>
+            <li class="step" data-layer="sige">
+              <h3>The bottom face: processing</h3>
+              <p>Single-crystal silicon-germanium for high-performance electronic and processing functions, grown on the opposite face of the same wafer.</p>
+            </li>
+            <li class="step" data-layer="int">
+              <h3>The paths between</h3>
+              <p>Inter-side signaling, isolation, thermal paths and RF and compute coexistence, designed and validated together as one architecture. The integrated device is under development.</p>
+            </li>
+          </ol>
+          <div class="step-dots" id="step-dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
         </div>
-        <div class="panels">
-          <div role="tabpanel" id="panel-int" aria-labelledby="tab-int">
-            <h3>Three layers, one platform</h3>
-            <p>RF on top, sapphire at the core, electronics below. Between the faces sit inter-side signaling, isolation, thermal paths and RF and compute coexistence, designed and validated together. Pick a layer to explore it.</p>
+        <div class="tech-visual" aria-hidden="true">
+          <div class="wafer3d big" id="cut-wafer" data-layer="all">
+            <div class="w-stage">
+              <div class="w-layer w-sige" data-slices="7" data-tag="sige"></div>
+              <div class="w-layer w-sapph" data-slices="10" data-tag="sapphire">
+                <div class="w-vias"><i style="--x:30%;--y:42%"></i><i style="--x:52%;--y:30%"></i><i style="--x:66%;--y:58%"></i><i style="--x:40%;--y:68%"></i><i style="--x:58%;--y:46%"></i></div>
+              </div>
+              <div class="w-layer w-rf" data-slices="6" data-tag="rf">
+                <div class="w-rings"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="w-shadow"></div>
           </div>
-          <div role="tabpanel" id="panel-rf" aria-labelledby="tab-rf" hidden>
-            <h3>The top face: power at frequency</h3>
-            <p>Gallium-nitride-family devices for high-power, high-frequency work: the RF front ends of radar, electronic warfare and communications systems. Sapphire is already an established substrate for III-nitride growth.</p>
-          </div>
-          <div role="tabpanel" id="panel-sapphire" aria-labelledby="tab-sapphire" hidden>
-            <h3>The core: one crystal, two jobs</h3>
-            <p>Single-crystal sapphire is an electrical insulator by nature. It gives both device layers a common physical foundation while keeping them electrically separate.</p>
-          </div>
-          <div role="tabpanel" id="panel-sige" aria-labelledby="tab-sige" hidden>
-            <h3>The bottom face: processing</h3>
-            <p>Single-crystal silicon-germanium for high-performance electronic and processing functions, grown on the opposite face of the same wafer.</p>
-          </div>
-        </div>
-        <div class="cells" data-reveal>
-          <a href="#applications" class="cell cell-ink">See where it applies</a>
-          <a href="#contact" class="cell cell-tone">Discuss the platform</a>
+          <span class="w-tag" data-for="rf">III-nitride RF</span>
+          <span class="w-tag" data-for="sapphire">Sapphire substrate</span>
+          <span class="w-tag" data-for="sige">SiGe electronics</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY TITANYM -->
-  <section class="chapter c-amber why" id="why" data-chapter="amber" aria-labelledby="why-h">
-    <div class="why-head">
-      <h2 id="why-h" data-reveal>Integration at the wafer.</h2>
-      <p class="why-intro" data-reveal>Heterogeneous systems usually meet at the package. Titanym moves the meeting point down to the wafer itself.</p>
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Radar front ends</span><span>Electronic warfare</span><span>Wireless infrastructure</span><span>SATCOM</span><span>Microwave links</span><span>Payload processing</span><span>RF sensing</span><span>High-reliability modules</span>
+      <span>Radar front ends</span><span>Electronic warfare</span><span>Wireless infrastructure</span><span>SATCOM</span><span>Microwave links</span><span>Payload processing</span><span>RF sensing</span><span>High-reliability modules</span>
     </div>
-    <div class="rows">
-      <article class="row" data-reveal>
-        <div class="row-text">
+  </div>
+
+  <!-- WHY -->
+  <section class="why" id="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-rise>Why Titanym</p>
+        <h2 id="why-h" data-split>Integration at the wafer.</h2>
+        <p class="sec-lead" data-rise>Heterogeneous systems usually meet at the package. Titanym moves the meeting point down to the wafer itself.</p>
+      </div>
+      <div class="why-grid">
+        <article class="why-card" data-reveal>
+          <svg class="mini mini-gap" viewBox="0 0 240 120" aria-hidden="true">
+            <rect class="g-a" x="40" y="40" width="56" height="40" rx="3"/>
+            <rect class="g-b" x="144" y="40" width="56" height="40" rx="3"/>
+            <path class="g-line" d="M96 60 H144"/>
+          </svg>
           <h3>RF and compute, closer</h3>
           <p>Front end and processor normally sit on separate dies, packages and often boards. A shared wafer lets suitable designs place selected processing right behind the RF electronics.</p>
-        </div>
-        <img class="row-img w-a" src="images/radar-edge.jpg" width="385" height="251" loading="lazy" alt="A radar dish on a ridge scanning the sky, with a processor icon beside it">
-      </article>
-      <article class="row" data-reveal>
-        <div class="row-text">
+        </article>
+        <article class="why-card" data-reveal>
+          <svg class="mini mini-iso" viewBox="0 0 240 120" aria-hidden="true">
+            <rect class="i-top" x="40" y="24" width="160" height="18" rx="2"/>
+            <rect class="i-mid" x="40" y="46" width="160" height="28" rx="2"/>
+            <rect class="i-bot" x="40" y="78" width="160" height="18" rx="2"/>
+            <circle class="spark" cx="80" cy="44" r="3"/><circle class="spark s2" cx="130" cy="44" r="3"/><circle class="spark s3" cx="170" cy="44" r="3"/>
+          </svg>
           <h3>Isolation in the material</h3>
           <p>Sapphire insulates the two device layers by nature, rather than by added packaging, and it is a substrate the III-nitride industry already knows well.</p>
-        </div>
-        <img class="row-img w-b" src="images/chip-stack.jpg" width="259" height="251" loading="lazy" alt="Layers of a chip separated in an exploded view">
-      </article>
-      <article class="row" data-reveal>
-        <div class="row-text">
+        </article>
+        <article class="why-card" data-reveal>
+          <svg class="mini mini-via" viewBox="0 0 240 120" aria-hidden="true">
+            <rect class="i-top" x="40" y="16" width="160" height="14" rx="2"/>
+            <rect class="i-bot" x="40" y="90" width="160" height="14" rx="2"/>
+            <path class="v-line" d="M70 30 V90 M105 30 V90 M140 30 V90 M175 30 V90"/>
+            <circle class="v-dot" cx="70" cy="30" r="3"/><circle class="v-dot d2" cx="105" cy="90" r="3"/><circle class="v-dot d3" cx="140" cy="30" r="3"/><circle class="v-dot d4" cx="175" cy="90" r="3"/>
+          </svg>
           <h3>Interfaces by design</h3>
           <p>The signal, power and control paths between the two faces are designed and validated as part of the architecture, not bolted on afterwards.</p>
-        </div>
-        <img class="row-img w-c" src="images/chip-shield.jpg" width="242" height="251" loading="lazy" alt="A chip marked Ti inside a shield outline">
-      </article>
-      <article class="row" data-reveal>
-        <div class="row-text">
+        </article>
+        <article class="why-card" data-reveal>
+          <svg class="mini mini-heat" viewBox="0 0 240 120" aria-hidden="true">
+            <rect class="i-mid" x="40" y="88" width="160" height="16" rx="2"/>
+            <path class="h-wave" d="M70 84 C60 70 80 60 70 46 C60 32 80 22 70 10"/>
+            <path class="h-wave w2" d="M120 84 C110 70 130 60 120 46 C110 32 130 22 120 10"/>
+            <path class="h-wave w3" d="M170 84 C160 70 180 60 170 46 C160 32 180 22 170 10"/>
+          </svg>
           <h3>Heat and reliability first</h3>
           <p>Power RF runs hot and precision electronics do not like heat. Thermal flow and long-term reliability are treated as primary design constraints from the start.</p>
-        </div>
-        <img class="row-img w-b" src="images/wafer-horizon.jpg" width="585" height="360" loading="lazy" alt="A patterned wafer lit gold against the curve of the Earth">
-      </article>
-      <article class="row" data-reveal>
-        <div class="row-text">
-          <h3>A proven materials base</h3>
-          <p>Single-crystal silicon-germanium has been grown directly on sapphire at 450&ndash;500&nbsp;&deg;C in published research and characterized by X-ray diffraction, AFM and TEM. Titanym builds from that foundation; the integrated RF and compute platform is under development.</p>
-        </div>
-        <img class="row-img w-c" src="images/wafer-macro.jpg" width="221" height="251" loading="lazy" alt="A silicon-germanium on sapphire wafer under blue light">
-      </article>
+        </article>
+        <article class="why-card why-wide" data-reveal>
+          <svg class="mini mini-lattice" id="lattice" viewBox="0 0 240 120" aria-hidden="true"></svg>
+          <div>
+            <h3>A proven materials base</h3>
+            <p>Single-crystal silicon-germanium has been grown directly on sapphire at 450&ndash;500&nbsp;&deg;C in published research and characterized by X-ray diffraction, AFM and TEM. Titanym builds from that foundation; the integrated RF and compute platform is under development.</p>
+          </div>
+        </article>
+      </div>
       <p class="why-close" data-reveal>Not a replacement for every process. A new integration path where conventional approaches force costly tradeoffs.</p>
     </div>
   </section>
 
   <!-- APPLICATIONS -->
-  <section class="chapter c-void apps" id="applications" data-chapter="void" aria-labelledby="apps-h">
-    <h2 id="apps-h" class="apps-h" data-reveal>Built for mission systems.</h2>
-    <ul class="poster">
-      <li class="app" data-reveal>
-        <button class="app-row" aria-expanded="false" aria-controls="app-radar">
-          <span class="app-name">Radar &amp; EW</span><span class="app-tag">Defense first</span>
-        </button>
-        <div class="app-detail" id="app-radar" hidden>
-          <img src="images/radar-dish.jpg" width="393" height="142" loading="lazy" alt="A radar dish at a mountain site at night">
-          <div>
+  <section class="apps" id="applications" aria-labelledby="apps-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-rise>Applications</p>
+        <h2 id="apps-h" data-split>Built for mission systems.</h2>
+      </div>
+      <div class="app-grid">
+        <article class="app" data-reveal>
+          <div class="scene s-radar" aria-hidden="true">
+            <svg viewBox="0 0 400 240">
+              <defs>
+                <radialGradient id="sweep-g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(200 120) scale(110)">
+                  <stop offset="0" stop-color="#E8A030" stop-opacity=".0"/><stop offset="1" stop-color="#E8A030" stop-opacity=".55"/>
+                </radialGradient>
+              </defs>
+              <g class="r-grid"><circle cx="200" cy="120" r="36"/><circle cx="200" cy="120" r="72"/><circle cx="200" cy="120" r="108"/><path d="M200 8 V232 M88 120 H312"/></g>
+              <g class="r-sweep"><path d="M200 120 L200 12 A108 108 0 0 1 276 44 Z" fill="url(#sweep-g)"/><path d="M200 120 L276 44" class="r-arm"/></g>
+              <circle class="blip b1" cx="250" cy="70" r="4"/><circle class="blip b2" cx="140" cy="160" r="4"/><circle class="blip b3" cx="268" cy="168" r="4"/><circle class="blip b4" cx="150" cy="78" r="4"/>
+            </svg>
+          </div>
+          <div class="app-body">
+            <p class="app-tag">Defense first</p>
+            <h3>Radar &amp; electronic warfare</h3>
             <p>Radar and electronic warfare combine demanding RF front ends with signal processing and control. Titanym is targeting ways to bring selected processing closer to the high-frequency electronics through a common-substrate architecture.</p>
             <p class="areas">Radar front ends &middot; RF sensing &middot; Electronic warfare electronics &middot; Signal-processing subsystems</p>
           </div>
-        </div>
-      </li>
-      <li class="app" data-reveal>
-        <button class="app-row" aria-expanded="false" aria-controls="app-telecom">
-          <span class="app-name">Telecom</span><span class="app-tag">Commercial &amp; dual-use</span>
-        </button>
-        <div class="app-detail" id="app-telecom" hidden>
-          <img src="images/telecom-tower.jpg" width="393" height="142" loading="lazy" alt="A telecommunications tower above a city at night">
-          <div>
+        </article>
+        <article class="app" data-reveal>
+          <div class="scene s-tel" aria-hidden="true">
+            <svg viewBox="0 0 400 240">
+              <g class="t-city"><rect x="20" y="180" width="34" height="60"/><rect x="58" y="160" width="26" height="80"/><rect x="88" y="196" width="40" height="44"/><rect x="272" y="170" width="30" height="70"/><rect x="306" y="188" width="44" height="52"/><rect x="354" y="150" width="28" height="90"/></g>
+              <g class="t-tower"><path d="M200 60 L176 240 M200 60 L224 240 M184 180 H216 M188 140 H212 M192 100 H208 M184 180 L212 140 M216 180 L188 140 M188 140 L208 100 M212 140 L192 100"/><rect x="190" y="70" width="6" height="22" rx="1"/><rect x="204" y="70" width="6" height="22" rx="1"/></g>
+              <g class="t-waves"><path class="tw tw1" d="M228 58 A30 30 0 0 1 228 98"/><path class="tw tw2" d="M240 46 A46 46 0 0 1 240 110"/><path class="tw tw3" d="M252 34 A62 62 0 0 1 252 122"/><path class="tw tw1" d="M172 58 A30 30 0 0 0 172 98"/><path class="tw tw2" d="M160 46 A46 46 0 0 0 160 110"/><path class="tw tw3" d="M148 34 A62 62 0 0 0 148 122"/></g>
+              <circle class="t-light" cx="200" cy="60" r="4"/>
+            </svg>
+          </div>
+          <div class="app-body">
+            <p class="app-tag">Commercial &amp; dual-use</p>
+            <h3>Telecommunications</h3>
             <p>Modern networks depend on RF hardware and digital processing working together. Titanym&rsquo;s architecture opens new approaches to high-frequency communications electronics where integration, heat and packaging complexity matter.</p>
             <p class="areas">Wireless infrastructure &middot; Microwave and high-frequency links &middot; Telecom RF electronics &middot; Communications processing</p>
           </div>
-        </div>
-      </li>
-      <li class="app" data-reveal>
-        <button class="app-row" aria-expanded="false" aria-controls="app-space">
-          <span class="app-name">Space</span><span class="app-tag">SATCOM &amp; payloads</span>
-        </button>
-        <div class="app-detail" id="app-space" hidden>
-          <img src="images/satellite.jpg" width="392" height="142" loading="lazy" alt="A satellite in orbit above the Earth">
-          <div>
+        </article>
+        <article class="app" data-reveal>
+          <div class="scene s-space" aria-hidden="true">
+            <svg viewBox="0 0 400 240">
+              <g class="stars"><circle cx="40" cy="30" r="1.2"/><circle cx="90" cy="70" r="1"/><circle cx="150" cy="24" r="1.4"/><circle cx="230" cy="50" r="1"/><circle cx="300" cy="20" r="1.3"/><circle cx="360" cy="64" r="1"/><circle cx="330" cy="110" r="1.2"/><circle cx="60" cy="120" r="1"/></g>
+              <path class="earth" d="M-20 240 Q200 150 420 240 Z"/>
+              <path class="earth-rim" d="M-20 240 Q200 150 420 240"/>
+              <path id="orbit" class="orbit" d="M40 170 Q200 30 360 170"/>
+              <g class="sat"><rect x="-6" y="-5" width="12" height="10" rx="1"/><rect class="panel" x="-24" y="-3" width="16" height="6"/><rect class="panel" x="8" y="-3" width="16" height="6"/>
+                <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#orbit"/></animateMotion></g>
+              <path class="beam" d="M200 196 L200 108"/>
+            </svg>
+          </div>
+          <div class="app-body">
+            <p class="app-tag">SATCOM &amp; payloads</p>
+            <h3>Space</h3>
             <p>Spacecraft and satellite links demand tight control of power, heat, mass and reliability. Titanym is pursuing an integration architecture for future RF and computing payload electronics, subject to each mission&rsquo;s qualification requirements.</p>
             <p class="areas">SATCOM electronics &middot; Payload signal processing &middot; Spaceborne RF subsystems</p>
           </div>
-        </div>
-      </li>
-      <li class="app" data-reveal>
-        <button class="app-row" aria-expanded="false" aria-controls="app-rugged">
-          <span class="app-name">Rugged</span><span class="app-tag">Mission-critical</span>
-        </button>
-        <div class="app-detail" id="app-rugged" hidden>
-          <img src="images/rugged-module.jpg" width="381" height="142" loading="lazy" alt="An electronics module on a rocky mountain outcrop">
-          <div>
+        </article>
+        <article class="app" data-reveal>
+          <div class="scene s-rug" aria-hidden="true">
+            <svg viewBox="0 0 400 240">
+              <path class="terrain" d="M0 210 L60 170 L110 196 L170 140 L230 188 L290 150 L350 190 L400 166 V240 H0 Z"/>
+              <g class="hex"><path d="M200 46 L250 74 V130 L200 158 L150 130 V74 Z"/><path class="hex-in" d="M200 70 L229 86 V118 L200 134 L171 118 V86 Z"/></g>
+              <circle class="led l1" cx="186" cy="102" r="3"/><circle class="led l2" cx="200" cy="102" r="3"/><circle class="led l3" cx="214" cy="102" r="3"/>
+              <path class="hex-scan" d="M150 74 H250"/>
+            </svg>
+          </div>
+          <div class="app-body">
+            <p class="app-tag">Mission-critical</p>
+            <h3>Rugged &amp; high-reliability</h3>
             <p>Selected aerospace, industrial and high-reliability systems may gain from closer integration of RF and electronic functions. We evaluate these by customer requirements and demonstrated device capability.</p>
             <p class="areas">Harsh-environment sensing &middot; Specialized electronic modules &middot; High-reliability systems</p>
           </div>
-        </div>
-      </li>
-    </ul>
-    <figure class="apps-media" data-reveal>
-      <img src="images/jet.jpg" width="803" height="310" loading="lazy" alt="A fighter aircraft above the clouds at sunset">
-    </figure>
+        </article>
+      </div>
+    </div>
   </section>
 
   <!-- GOVERNMENT -->
-  <section class="chapter c-plat gov" id="government" data-chapter="plat" aria-labelledby="gov-h">
-    <div class="board">
-      <div class="t t-accent t-wide" data-reveal>
-        <h2 id="gov-h">Awardable. Twice.</h2>
-        <p>Titanym&rsquo;s submitted solutions were assessed as Awardable in two separate defense innovation marketplaces, giving authorized government customers a route to review them and open acquisition discussions.</p>
+  <section class="gov" id="government" aria-labelledby="gov-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-rise>Government &amp; Partnerships</p>
+        <h2 id="gov-h" data-split>Awardable. Twice.</h2>
+        <p class="sec-lead" data-rise>Titanym&rsquo;s submitted solutions were assessed as Awardable in two separate defense innovation marketplaces, giving authorized government customers a route to review them and open acquisition discussions.</p>
       </div>
-      <a class="t t-badge" href="https://www.tradewindai.com" target="_blank" rel="noopener" data-reveal>
-        <img src="images/badge-tradewinds-awardable.png" width="640" height="640" loading="lazy" alt="Awardable badge, CDAO Tradewinds Solutions Marketplace">
-      </a>
-      <a class="t t-badge" href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener" data-reveal>
-        <img src="images/badge-eris-awardable.png" width="592" height="594" loading="lazy" alt="Awardable badge, ERIS Marketplace">
-      </a>
-      <div class="t t-half" data-reveal>
-        <h3>CDAO Tradewinds Solutions Marketplace</h3>
-        <p>Awardable through the Department of Defense Chief Digital and Artificial Intelligence Office&rsquo;s Tradewinds Solutions Marketplace, where authorized government buyers review assessed solutions and consider procurement pathways.</p>
-        <a class="t-link" href="https://www.tradewindai.com" target="_blank" rel="noopener">tradewindai.com</a>
-        <p class="fine">Viewing the submission requires a government login.</p>
+      <div class="gov-grid">
+        <article class="gov-card" data-reveal>
+          <a class="gov-badge" href="https://www.tradewindai.com" target="_blank" rel="noopener" aria-label="Tradewinds Solutions Marketplace (opens tradewindai.com)">
+            <img src="images/badge-tradewinds-awardable.png" width="640" height="640" loading="lazy" alt="Awardable badge, CDAO Tradewinds Solutions Marketplace">
+          </a>
+          <div>
+            <h3>CDAO Tradewinds Solutions Marketplace</h3>
+            <p>Awardable through the Department of Defense Chief Digital and Artificial Intelligence Office&rsquo;s Tradewinds Solutions Marketplace, where authorized government buyers review assessed solutions and consider procurement pathways.</p>
+            <a class="t-link" href="https://www.tradewindai.com" target="_blank" rel="noopener">tradewindai.com</a>
+            <p class="fine">Viewing the submission requires a government login.</p>
+          </div>
+        </article>
+        <article class="gov-card" data-reveal>
+          <a class="gov-badge" href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener" aria-label="ERIS Marketplace (opens darpaconnect.us)">
+            <img src="images/badge-eris-awardable.png" width="592" height="594" loading="lazy" alt="Awardable badge, ERIS Marketplace">
+          </a>
+          <div>
+            <h3>DARPA ERIS Marketplace</h3>
+            <p>Awardable in the Defense Advanced Research Projects Agency&rsquo;s Expedited Research Innovation System (ERIS) Marketplace after a competitive technical assessment of the submitted solution.</p>
+            <a class="t-link" href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener">darpaconnect.us/eris</a>
+            <p class="fine">Viewing marketplace materials requires an authorized government account.</p>
+          </div>
+        </article>
       </div>
-      <div class="t t-half" data-reveal>
-        <h3>DARPA ERIS Marketplace</h3>
-        <p>Awardable in the Defense Advanced Research Projects Agency&rsquo;s Expedited Research Innovation System (ERIS) Marketplace after a competitive technical assessment of the submitted solution.</p>
-        <a class="t-link" href="https://www.darpaconnect.us/eris" target="_blank" rel="noopener">darpaconnect.us/eris</a>
-        <p class="fine">Viewing marketplace materials requires an authorized government account.</p>
-      </div>
-      <div class="t t-full" data-reveal>
+      <div class="partners-row" data-reveal>
         <h3>Who we work with</h3>
         <ul class="partners">
           <li>Government program offices</li>
@@ -330,22 +428,26 @@
           <li>Technical collaborators</li>
           <li>Strategic commercial partners</li>
         </ul>
-        <a href="#contact" class="btn btn-solid">Discuss a partnership</a>
+        <a href="#contact" class="btn btn-amber">Discuss a partnership</a>
       </div>
+      <p class="fine gov-fine">Assessment as Awardable does not constitute a government contract, funding commitment, endorsement, sole-source authorization, or guarantee of an award. The two marketplaces assessed Titanym separately; neither is a joint certification.</p>
     </div>
-    <p class="fine gov-fine">Assessment as Awardable does not constitute a government contract, funding commitment, endorsement, sole-source authorization, or guarantee of an award. The two marketplaces assessed Titanym separately; neither is a joint certification.</p>
   </section>
 
   <!-- CONTACT -->
-  <section class="chapter c-horizon contact" id="contact" data-chapter="horizon" aria-labelledby="contact-h">
-    <div class="strip" aria-hidden="true">
-      <div class="strip-track">
-        <img src="images/radar-dish.jpg" alt="" width="393" height="142"><img src="images/gan-die.jpg" alt="" width="251" height="251"><img src="images/satellite.jpg" alt="" width="392" height="142"><img src="images/wafer-stack.jpg" alt="" width="635" height="452"><img src="images/telecom-tower.jpg" alt="" width="393" height="142"><img src="images/sige-die.jpg" alt="" width="250" height="243"><img src="images/rugged-module.jpg" alt="" width="381" height="142"><img src="images/radar-chain.jpg" alt="" width="552" height="242"><img src="images/radar-dish.jpg" alt="" width="393" height="142"><img src="images/gan-die.jpg" alt="" width="251" height="251"><img src="images/satellite.jpg" alt="" width="392" height="142"><img src="images/wafer-stack.jpg" alt="" width="635" height="452"><img src="images/telecom-tower.jpg" alt="" width="393" height="142"><img src="images/sige-die.jpg" alt="" width="250" height="243"><img src="images/rugged-module.jpg" alt="" width="381" height="142"><img src="images/radar-chain.jpg" alt="" width="552" height="242">
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <svg class="contact-waves" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <path class="cw cw1" d="M0 300 C240 220 480 380 720 300 C960 220 1200 380 1440 300 C1680 220 1920 380 2160 300 C2400 220 2640 380 2880 300"/>
+      <path class="cw cw2" d="M0 340 C240 260 480 420 720 340 C960 260 1200 420 1440 340 C1680 260 1920 420 2160 340 C2400 260 2640 420 2880 340"/>
+      <path class="cw cw3" d="M0 380 C240 300 480 460 720 380 C960 300 1200 460 1440 380 C1680 300 1920 460 2160 380 C2400 300 2640 460 2880 380"/>
+    </svg>
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow" data-rise>Contact</p>
+        <h2 id="contact-h" data-split>Let&rsquo;s talk about what&rsquo;s next.</h2>
+        <p class="sec-lead" data-rise>We welcome conversations with government customers, defense and communications companies, semiconductor manufacturers and technical partners exploring advanced RF and compute integration.</p>
+        <a class="mail" href="mailto:contact@titanym.com" data-rise>contact@titanym.com</a>
       </div>
-    </div>
-    <div class="contact-body">
-      <h2 id="contact-h" data-reveal>Let&rsquo;s talk about what&rsquo;s next.</h2>
-      <p class="contact-intro" data-reveal>We welcome conversations with government customers, defense and communications companies, semiconductor manufacturers and technical partners exploring advanced RF and compute integration.</p>
       <form class="form" action="https://formspree.io/f/xeelnkqj" method="POST" id="contact-form" data-reveal>
         <label class="field">
           <span>Name</span>
@@ -376,7 +478,7 @@
           <span>Message</span>
           <textarea id="c-msg" name="message" rows="4" required></textarea>
         </label>
-        <button type="submit" class="submit" id="contact-submit">Send message</button>
+        <button type="submit" class="btn btn-amber submit" id="contact-submit">Send message</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -384,23 +486,22 @@
 
 </main>
 
-<footer class="chapter c-amber foot" data-chapter="amber">
-  <div class="foot-top">
-    <p class="wordmark"><span class="ti">Ti</span>tanym</p>
-    <p>Where silicon ends. Titanym begins.</p>
-    <p>Defense &middot; Space &middot; Telecommunications</p>
-    <a href="#top" class="foot-up">Back to top</a>
-  </div>
-  <a class="foot-mail" href="mailto:contact@titanym.com">contact<br class="mail-break">@titanym.com</a>
-  <div class="foot-meta">
-    <nav aria-label="Footer">
-      <a href="#technology">Technology</a>
-      <a href="#applications">Applications</a>
-      <a href="#government">Government</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <p>Integrate. Harden. Outperform.</p>
-    <p>&copy; 2026 Titanym Inc. All rights reserved.</p>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <p>Where silicon ends. Titanym begins.</p>
+      <nav aria-label="Footer">
+        <a href="#technology">Technology</a>
+        <a href="#applications">Applications</a>
+        <a href="#government">Government</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="foot-word" aria-hidden="true"><span class="ti">Ti</span>tanym</p>
+    <div class="foot-meta">
+      <p>Defense &middot; Space &middot; Telecommunications</p>
+      <p>&copy; 2026 Titanym Inc. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
