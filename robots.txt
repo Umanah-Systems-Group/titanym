@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /blender/
+
+Sitemap: https://www.titanym.com/sitemap.xml

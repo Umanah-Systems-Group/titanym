@@ -1,0 +1,38 @@
+# Titanym
+
+> Titanym Inc. is developing a two-sided sapphire semiconductor platform: III-nitride (gallium-nitride-family) RF electronics on one face of a single sapphire wafer and single-crystal silicon-germanium (SiGe) electronics on the opposite face. The goal is to move the integration of RF and compute from the package, interposer and board down to the wafer itself, for defense, aerospace and telecommunications systems. The integrated device is under development.
+
+Tagline: "Where silicon ends. Titanym begins."
+
+## The problem
+
+High-power RF front ends and digital processing need different materials, fabrication and thermal conditions, so today they are made separately and joined through packages, interposers and boards. That costs signal path length and interfaces, power and heat, size and complexity, and separate fabrication and qualification flows.
+
+## The platform
+
+- Top face: III-nitride RF devices for high-power, high-frequency work (radar, electronic warfare and communications front ends).
+- Core: single-crystal sapphire, an electrical insulator that gives both device layers a common foundation while keeping them electrically separate, and an established substrate for III-nitride growth.
+- Bottom face: single-crystal silicon-germanium for electronic and processing functions.
+- Between the faces: inter-side signaling, isolation, thermal paths and RF/compute coexistence, designed and validated together as one architecture.
+- Materials basis: single-crystal SiGe has been grown directly on sapphire at 450-500 °C in published research and characterized by X-ray diffraction, AFM and TEM.
+
+Titanym is not a replacement for every process; it is a new integration path where conventional approaches force costly tradeoffs.
+
+## Applications
+
+- Radar and electronic warfare (defense first): radar front ends, RF sensing, electronic warfare electronics, signal-processing subsystems.
+- Telecommunications (commercial and dual-use): wireless infrastructure, microwave and high-frequency links, telecom RF electronics, communications processing.
+- Space (SATCOM and payloads): SATCOM electronics, payload signal processing, spaceborne RF subsystems, subject to each mission's qualification requirements.
+- Rugged and high-reliability: harsh-environment sensing, specialized electronic modules, high-reliability systems.
+
+## Government and partnerships
+
+Titanym's solutions were assessed as Awardable in two separate defense innovation marketplaces: the DARPA ERIS (Expedited Research Innovation System) Marketplace and the CDAO Tradewinds Solutions Marketplace. Awardable status does not constitute a government contract, funding commitment, endorsement, sole-source authorization or guarantee of an award, and the two assessments are separate.
+
+Titanym works with government program offices, defense primes and system integrators, semiconductor manufacturing partners, technical collaborators and strategic commercial partners.
+
+## Links
+
+- [Website](https://www.titanym.com/)
+- [LinkedIn](https://www.linkedin.com/company/titanym)
+- Contact: contact@titanym.com
