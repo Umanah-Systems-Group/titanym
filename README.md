@@ -25,4 +25,4 @@ The form posts to Formspree (`https://formspree.io/f/xeelnkqj`), form id `contac
 
 ## History
 
-The previous site is preserved at the git tag `legacy-site-2026-10-26`.
+The previous site is preserved on the `legacy-site` branch.
