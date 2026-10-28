@@ -661,3 +661,10 @@ h1, h2, .sec-lead, .why-close { text-wrap: balance; }
 }
 
 .contact-copy .li-link { display: flex; width: max-content; }
+
+/* Hero wafer: on touch screens every drag on the chip turns it (both axes) instead of scrolling the page.
+   The cutaway keeps pan-y so scrolling through the pinned section never gets stuck. */
+#hero-gl, #hero-gl canvas { touch-action: none; }
+@media (max-width: 900px) {
+  #hero-gl { width: min(84vw, 440px); }
+}

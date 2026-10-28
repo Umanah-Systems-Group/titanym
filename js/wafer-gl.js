@@ -100,7 +100,7 @@ class WaferView {
     this.spin.add(glow);
     this.glow = glow;
 
-    // Drag to rotate. touch-action: pan-y in CSS keeps vertical page scrolling on phones.
+    // Drag to rotate. The hero sets touch-action: none so drags on it never scroll; the cutaway keeps pan-y.
     this.yaw = -0.5; this.pitch = 0; this.vel = 0; this.dragging = false; this.idle = 0;
     this.targetPitch = 0;
     let lastX = 0, lastY = 0;
